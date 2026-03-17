@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T21:53:45.211Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
