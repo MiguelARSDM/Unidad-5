@@ -1,0 +1,14 @@
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\bin\Debug\Sistema_Calificacion.exe.config
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\bin\Debug\Sistema_Calificacion.exe
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\bin\Debug\Sistema_Calificacion.pdb
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.csproj.AssemblyReference.cache
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.MenuPrincipal.resources
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.Properties.Resources.resources
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.csproj.GenerateResource.cache
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.csproj.CoreCompileInputs.cache
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.exe
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.pdb
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.exe.config
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.FormularioCalificaciones.resources
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.FormularioEstudiantes.resources
+C:\Users\migue\OneDrive\Desktop\Unidad 5 Final\Unidad-5\Sistema_Calificacion\obj\Debug\Sistema_Calificacion.FormularioMaterias.resources

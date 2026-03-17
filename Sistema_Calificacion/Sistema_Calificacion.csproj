@@ -46,14 +46,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormularioCalificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormularioCalificaciones.Designer.cs">
+      <DependentUpon>FormularioCalificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEstudiantes.Designer.cs">
+      <DependentUpon>FormularioEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioMaterias.Designer.cs">
+      <DependentUpon>FormularioMaterias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormularioCalificaciones.resx">
+      <DependentUpon>FormularioCalificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioEstudiantes.resx">
+      <DependentUpon>FormularioEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioMaterias.resx">
+      <DependentUpon>FormularioMaterias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
