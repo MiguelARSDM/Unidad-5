@@ -3,27 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formulariomaterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formulariomaterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formulariomaterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formulariomaterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\onedrive\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -34,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,55 +35,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormularioMaterias.cs",
-              "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs",
-              "RelativeDocumentMoniker": "FormularioMaterias.cs",
-              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs",
-              "RelativeToolTip": "FormularioMaterias.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAArwBUAAAAAAAAAAAAAAA==",
+              "Title": "FormularioEstudiantes.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs",
+              "RelativeDocumentMoniker": "FormularioEstudiantes.cs",
+              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs [Design]",
+              "RelativeToolTip": "FormularioEstudiantes.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T22:49:02.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormularioMaterias.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs",
-              "RelativeDocumentMoniker": "FormularioMaterias.cs",
-              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs [Design]",
-              "RelativeToolTip": "FormularioMaterias.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T22:43:24.237Z",
+              "WhenOpened": "2026-03-18T02:51:15.645Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormularioEstudiantes.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs",
-              "RelativeDocumentMoniker": "FormularioEstudiantes.cs",
-              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs [Design]*",
-              "RelativeToolTip": "FormularioEstudiantes.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T22:28:36.502Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "FormularioCalificaciones.cs [Design]",
               "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs",
               "RelativeDocumentMoniker": "FormularioCalificaciones.cs",
-              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs [Design]",
-              "RelativeToolTip": "FormularioCalificaciones.cs [Design]",
+              "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs [Design]*",
+              "RelativeToolTip": "FormularioCalificaciones.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T22:13:21.261Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "MenuPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\MenuPrincipal.cs",
               "RelativeDocumentMoniker": "MenuPrincipal.cs",
@@ -99,20 +66,18 @@
               "RelativeToolTip": "MenuPrincipal.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAnwBwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T22:01:51.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T22:01:51.672Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "MenuPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\MenuPrincipal.cs",
               "RelativeDocumentMoniker": "MenuPrincipal.cs",
               "ToolTip": "C:\\Users\\migue\\OneDrive\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\MenuPrincipal.cs [Design]",
               "RelativeToolTip": "MenuPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T21:53:45.211Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-03-17T21:53:45.211Z"
             }
           ]
         }
