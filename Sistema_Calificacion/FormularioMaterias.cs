@@ -7,19 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_Calificacion.Modelo;
 
 namespace Sistema_Calificacion
 {
     public partial class FormularioMaterias : Form
     {
+        private SistemaCalificacionesDBEntities1 db;
         public FormularioMaterias()
         {
+            db = new SistemaCalificacionesDBEntities1();
             InitializeComponent();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
