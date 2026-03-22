@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtInsertCalificacion1 = new System.Windows.Forms.TextBox();
+            this.cmbInsertEstudianteID = new System.Windows.Forms.ComboBox();
+            this.cmbInsertMateriaID = new System.Windows.Forms.ComboBox();
+            this.txtInsertCalificacionID = new System.Windows.Forms.TextBox();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.txtInsertCalificacion4 = new System.Windows.Forms.TextBox();
+            this.txtInsertExamen = new System.Windows.Forms.TextBox();
+            this.txtInsertCalificacion2 = new System.Windows.Forms.TextBox();
+            this.txtInsertCalificacion3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,28 +48,24 @@
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txtElimCalificacionID = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.tablaContenido = new System.Windows.Forms.DataGridView();
+            this.btnCargar = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtActCalificacion1 = new System.Windows.Forms.TextBox();
+            this.cmbActEstudianteID = new System.Windows.Forms.ComboBox();
+            this.cmbActMateriaID = new System.Windows.Forms.ComboBox();
+            this.txtActCalificacionID = new System.Windows.Forms.TextBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.txtActCalificacion4 = new System.Windows.Forms.TextBox();
+            this.txtActExamen = new System.Windows.Forms.TextBox();
+            this.txtActCalificacion2 = new System.Windows.Forms.TextBox();
+            this.txtActCalificacion3 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -77,22 +77,22 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaContenido)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtInsertCalificacion1);
+            this.groupBox1.Controls.Add(this.cmbInsertEstudianteID);
+            this.groupBox1.Controls.Add(this.cmbInsertMateriaID);
+            this.groupBox1.Controls.Add(this.txtInsertCalificacionID);
+            this.groupBox1.Controls.Add(this.btnInsertar);
+            this.groupBox1.Controls.Add(this.txtInsertCalificacion4);
+            this.groupBox1.Controls.Add(this.txtInsertExamen);
+            this.groupBox1.Controls.Add(this.txtInsertCalificacion2);
+            this.groupBox1.Controls.Add(this.txtInsertCalificacion3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
@@ -108,42 +108,73 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insertar";
             // 
-            // button1
+            // txtInsertCalificacion1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 179);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(460, 52);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Insertar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtInsertCalificacion1.Location = new System.Drawing.Point(139, 37);
+            this.txtInsertCalificacion1.Name = "txtInsertCalificacion1";
+            this.txtInsertCalificacion1.Size = new System.Drawing.Size(100, 22);
+            this.txtInsertCalificacion1.TabIndex = 25;
             // 
-            // textBox8
+            // cmbInsertEstudianteID
             // 
-            this.textBox8.Location = new System.Drawing.Point(360, 88);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(106, 22);
-            this.textBox8.TabIndex = 17;
+            this.cmbInsertEstudianteID.FormattingEnabled = true;
+            this.cmbInsertEstudianteID.Location = new System.Drawing.Point(6, 86);
+            this.cmbInsertEstudianteID.Name = "cmbInsertEstudianteID";
+            this.cmbInsertEstudianteID.Size = new System.Drawing.Size(334, 24);
+            this.cmbInsertEstudianteID.TabIndex = 21;
             // 
-            // textBox6
+            // cmbInsertMateriaID
             // 
-            this.textBox6.Location = new System.Drawing.Point(360, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(106, 22);
-            this.textBox6.TabIndex = 15;
+            this.cmbInsertMateriaID.FormattingEnabled = true;
+            this.cmbInsertMateriaID.Location = new System.Drawing.Point(6, 135);
+            this.cmbInsertMateriaID.Name = "cmbInsertMateriaID";
+            this.cmbInsertMateriaID.Size = new System.Drawing.Size(334, 24);
+            this.cmbInsertMateriaID.TabIndex = 20;
             // 
-            // textBox3
+            // txtInsertCalificacionID
             // 
-            this.textBox3.Location = new System.Drawing.Point(245, 37);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(106, 22);
-            this.textBox3.TabIndex = 12;
+            this.txtInsertCalificacionID.Location = new System.Drawing.Point(6, 37);
+            this.txtInsertCalificacionID.Name = "txtInsertCalificacionID";
+            this.txtInsertCalificacionID.Size = new System.Drawing.Size(127, 22);
+            this.txtInsertCalificacionID.TabIndex = 19;
             // 
-            // textBox2
+            // btnInsertar
             // 
-            this.textBox2.Location = new System.Drawing.Point(360, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(106, 22);
-            this.textBox2.TabIndex = 11;
+            this.btnInsertar.Location = new System.Drawing.Point(6, 179);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(460, 52);
+            this.btnInsertar.TabIndex = 18;
+            this.btnInsertar.Text = "Insertar";
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
+            // 
+            // txtInsertCalificacion4
+            // 
+            this.txtInsertCalificacion4.Location = new System.Drawing.Point(360, 88);
+            this.txtInsertCalificacion4.Name = "txtInsertCalificacion4";
+            this.txtInsertCalificacion4.Size = new System.Drawing.Size(106, 22);
+            this.txtInsertCalificacion4.TabIndex = 17;
+            // 
+            // txtInsertExamen
+            // 
+            this.txtInsertExamen.Location = new System.Drawing.Point(360, 135);
+            this.txtInsertExamen.Name = "txtInsertExamen";
+            this.txtInsertExamen.Size = new System.Drawing.Size(106, 22);
+            this.txtInsertExamen.TabIndex = 15;
+            // 
+            // txtInsertCalificacion2
+            // 
+            this.txtInsertCalificacion2.Location = new System.Drawing.Point(245, 37);
+            this.txtInsertCalificacion2.Name = "txtInsertCalificacion2";
+            this.txtInsertCalificacion2.Size = new System.Drawing.Size(106, 22);
+            this.txtInsertCalificacion2.TabIndex = 12;
+            // 
+            // txtInsertCalificacion3
+            // 
+            this.txtInsertCalificacion3.Location = new System.Drawing.Point(360, 37);
+            this.txtInsertCalificacion3.Name = "txtInsertCalificacion3";
+            this.txtInsertCalificacion3.Size = new System.Drawing.Size(106, 22);
+            this.txtInsertCalificacion3.TabIndex = 11;
             // 
             // label1
             // 
@@ -219,9 +250,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox17);
+            this.groupBox2.Controls.Add(this.txtElimCalificacionID);
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Location = new System.Drawing.Point(483, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(255, 153);
@@ -229,12 +260,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Eliminar";
             // 
-            // textBox17
+            // txtElimCalificacionID
             // 
-            this.textBox17.Location = new System.Drawing.Point(9, 37);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(237, 22);
-            this.textBox17.TabIndex = 19;
+            this.txtElimCalificacionID.Location = new System.Drawing.Point(9, 37);
+            this.txtElimCalificacionID.Name = "txtElimCalificacionID";
+            this.txtElimCalificacionID.Size = new System.Drawing.Size(237, 22);
+            this.txtElimCalificacionID.TabIndex = 19;
             // 
             // label17
             // 
@@ -245,19 +276,20 @@
             this.label17.TabIndex = 20;
             this.label17.Text = "CalificaciónID";
             // 
-            // button2
+            // btnEliminar
             // 
-            this.button2.Location = new System.Drawing.Point(6, 82);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(240, 52);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEliminar.Location = new System.Drawing.Point(6, 82);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(240, 52);
+            this.btnEliminar.TabIndex = 19;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.tablaContenido);
+            this.groupBox4.Controls.Add(this.btnCargar);
             this.groupBox4.Location = new System.Drawing.Point(1, 270);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1219, 320);
@@ -265,28 +297,29 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Mostrar";
             // 
-            // dataGridView1
+            // tablaContenido
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1203, 255);
-            this.dataGridView1.TabIndex = 19;
+            this.tablaContenido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaContenido.Location = new System.Drawing.Point(6, 59);
+            this.tablaContenido.Name = "tablaContenido";
+            this.tablaContenido.RowHeadersWidth = 51;
+            this.tablaContenido.RowTemplate.Height = 24;
+            this.tablaContenido.Size = new System.Drawing.Size(1203, 255);
+            this.tablaContenido.TabIndex = 19;
             // 
-            // button3
+            // btnCargar
             // 
-            this.button3.Location = new System.Drawing.Point(491, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(237, 32);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Cargar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCargar.Location = new System.Drawing.Point(491, 21);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(237, 32);
+            this.btnCargar.TabIndex = 20;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.btnExportar);
             this.groupBox5.Location = new System.Drawing.Point(483, 161);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(255, 103);
@@ -294,56 +327,27 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Exportar";
             // 
-            // button5
+            // btnExportar
             // 
-            this.button5.Location = new System.Drawing.Point(6, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(240, 52);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Exportar";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 22);
-            this.textBox1.TabIndex = 19;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 135);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(334, 24);
-            this.comboBox1.TabIndex = 20;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(334, 24);
-            this.comboBox2.TabIndex = 21;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(139, 37);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 25;
+            this.btnExportar.Location = new System.Drawing.Point(6, 21);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(240, 52);
+            this.btnExportar.TabIndex = 0;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.textBox10);
-            this.groupBox3.Controls.Add(this.textBox11);
-            this.groupBox3.Controls.Add(this.textBox12);
+            this.groupBox3.Controls.Add(this.txtActCalificacion1);
+            this.groupBox3.Controls.Add(this.cmbActEstudianteID);
+            this.groupBox3.Controls.Add(this.cmbActMateriaID);
+            this.groupBox3.Controls.Add(this.txtActCalificacionID);
+            this.groupBox3.Controls.Add(this.btnActualizar);
+            this.groupBox3.Controls.Add(this.txtActCalificacion4);
+            this.groupBox3.Controls.Add(this.txtActExamen);
+            this.groupBox3.Controls.Add(this.txtActCalificacion2);
+            this.groupBox3.Controls.Add(this.txtActCalificacion3);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
@@ -359,72 +363,73 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Actualizar";
             // 
-            // textBox5
+            // txtActCalificacion1
             // 
-            this.textBox5.Location = new System.Drawing.Point(139, 37);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
-            this.textBox5.TabIndex = 25;
+            this.txtActCalificacion1.Location = new System.Drawing.Point(139, 37);
+            this.txtActCalificacion1.Name = "txtActCalificacion1";
+            this.txtActCalificacion1.Size = new System.Drawing.Size(100, 22);
+            this.txtActCalificacion1.TabIndex = 25;
             // 
-            // comboBox3
+            // cmbActEstudianteID
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(6, 86);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(334, 24);
-            this.comboBox3.TabIndex = 21;
+            this.cmbActEstudianteID.FormattingEnabled = true;
+            this.cmbActEstudianteID.Location = new System.Drawing.Point(6, 86);
+            this.cmbActEstudianteID.Name = "cmbActEstudianteID";
+            this.cmbActEstudianteID.Size = new System.Drawing.Size(334, 24);
+            this.cmbActEstudianteID.TabIndex = 21;
             // 
-            // comboBox4
+            // cmbActMateriaID
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(6, 135);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(334, 24);
-            this.comboBox4.TabIndex = 20;
+            this.cmbActMateriaID.FormattingEnabled = true;
+            this.cmbActMateriaID.Location = new System.Drawing.Point(6, 135);
+            this.cmbActMateriaID.Name = "cmbActMateriaID";
+            this.cmbActMateriaID.Size = new System.Drawing.Size(334, 24);
+            this.cmbActMateriaID.TabIndex = 20;
             // 
-            // textBox7
+            // txtActCalificacionID
             // 
-            this.textBox7.Location = new System.Drawing.Point(6, 37);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(127, 22);
-            this.textBox7.TabIndex = 19;
+            this.txtActCalificacionID.Location = new System.Drawing.Point(6, 37);
+            this.txtActCalificacionID.Name = "txtActCalificacionID";
+            this.txtActCalificacionID.Size = new System.Drawing.Size(127, 22);
+            this.txtActCalificacionID.TabIndex = 19;
             // 
-            // button4
+            // btnActualizar
             // 
-            this.button4.Location = new System.Drawing.Point(6, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(460, 52);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Actualizar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnActualizar.Location = new System.Drawing.Point(6, 179);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(460, 52);
+            this.btnActualizar.TabIndex = 18;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // textBox9
+            // txtActCalificacion4
             // 
-            this.textBox9.Location = new System.Drawing.Point(360, 88);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(106, 22);
-            this.textBox9.TabIndex = 17;
+            this.txtActCalificacion4.Location = new System.Drawing.Point(360, 88);
+            this.txtActCalificacion4.Name = "txtActCalificacion4";
+            this.txtActCalificacion4.Size = new System.Drawing.Size(106, 22);
+            this.txtActCalificacion4.TabIndex = 17;
             // 
-            // textBox10
+            // txtActExamen
             // 
-            this.textBox10.Location = new System.Drawing.Point(360, 135);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(106, 22);
-            this.textBox10.TabIndex = 15;
+            this.txtActExamen.Location = new System.Drawing.Point(360, 135);
+            this.txtActExamen.Name = "txtActExamen";
+            this.txtActExamen.Size = new System.Drawing.Size(106, 22);
+            this.txtActExamen.TabIndex = 15;
             // 
-            // textBox11
+            // txtActCalificacion2
             // 
-            this.textBox11.Location = new System.Drawing.Point(245, 37);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(106, 22);
-            this.textBox11.TabIndex = 12;
+            this.txtActCalificacion2.Location = new System.Drawing.Point(245, 37);
+            this.txtActCalificacion2.Name = "txtActCalificacion2";
+            this.txtActCalificacion2.Size = new System.Drawing.Size(106, 22);
+            this.txtActCalificacion2.TabIndex = 12;
             // 
-            // textBox12
+            // txtActCalificacion3
             // 
-            this.textBox12.Location = new System.Drawing.Point(360, 37);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(106, 22);
-            this.textBox12.TabIndex = 11;
+            this.txtActCalificacion3.Location = new System.Drawing.Point(360, 37);
+            this.txtActCalificacion3.Name = "txtActCalificacion3";
+            this.txtActCalificacion3.Size = new System.Drawing.Size(106, 22);
+            this.txtActCalificacion3.TabIndex = 11;
             // 
             // label9
             // 
@@ -510,12 +515,13 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormularioCalificaciones";
             this.Text = "FormularioCalificaciones";
+            this.Load += new System.EventHandler(this.FormularioCalificaciones_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaContenido)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -529,10 +535,10 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtInsertCalificacion4;
+        private System.Windows.Forms.TextBox txtInsertExamen;
+        private System.Windows.Forms.TextBox txtInsertCalificacion2;
+        private System.Windows.Forms.TextBox txtInsertCalificacion3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -541,28 +547,28 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.TextBox txtElimCalificacionID;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.DataGridView tablaContenido;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.ComboBox cmbInsertEstudianteID;
+        private System.Windows.Forms.ComboBox cmbInsertMateriaID;
+        private System.Windows.Forms.TextBox txtInsertCalificacionID;
+        private System.Windows.Forms.TextBox txtInsertCalificacion1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtActCalificacion1;
+        private System.Windows.Forms.ComboBox cmbActEstudianteID;
+        private System.Windows.Forms.ComboBox cmbActMateriaID;
+        private System.Windows.Forms.TextBox txtActCalificacionID;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.TextBox txtActCalificacion4;
+        private System.Windows.Forms.TextBox txtActExamen;
+        private System.Windows.Forms.TextBox txtActCalificacion2;
+        private System.Windows.Forms.TextBox txtActCalificacion3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;

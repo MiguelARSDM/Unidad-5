@@ -20,5 +20,54 @@ namespace Sistema_Calificacion
             InitializeComponent();
         }
 
+        private void FormularioMaterias_Load(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cargarDatos() //
+
+        {
+            //Crear la lista de materias
+            var Materias = db.Materias.OrderBy(m => m.MateriaID)
+                .Select( m => new 
+                {
+                    ID = m.MateriaID,
+                    Nombre = m.Nombre
+                    
+                }).ToList();
+            //Llenar la tabla con el contenido
+            tablaContenido.DataSource = Materias;
+
+            //Mejor Formato de la tablas
+            tablaContenido.Columns["ID"].Width = 100;
+            tablaContenido.Columns["Nombre"].Width = 520;
+        }
+
     }
 }

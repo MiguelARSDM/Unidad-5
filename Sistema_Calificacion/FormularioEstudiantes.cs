@@ -19,5 +19,52 @@ namespace Sistema_Calificacion
             db = new SistemaCalificacionesDBEntities1();
             InitializeComponent();
         }
+
+        private void FormularioEstudiantes_Load(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cargarDatos()
+        {
+
+            var Estudiantes = db.Estudiantes.OrderBy( e => e.EstudianteID).Select( e => new 
+            {
+                ID = e.EstudianteID,
+                Nombre = e.Nombre,
+                Apellido = e.Apellido
+            }).ToList();
+
+            tablaContenido.DataSource = Estudiantes;
+
+            tablaContenido.Columns["ID"].Width = 100;
+            tablaContenido.Columns["Nombre"].Width = 254;
+            tablaContenido.Columns["Apellido"].Width = 254;
+        }
     }
 }
