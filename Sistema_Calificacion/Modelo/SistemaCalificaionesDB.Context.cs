@@ -13,10 +13,10 @@ namespace Sistema_Calificacion.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SistemaCalificacionesDBEntities1 : DbContext
+    public partial class SistemaCalificacionesDBEntities28 : DbContext
     {
-        public SistemaCalificacionesDBEntities1()
-            : base("name=SistemaCalificacionesDBEntities1")
+        public SistemaCalificacionesDBEntities28()
+            : base("name=SistemaCalificacionesDBEntities28")
         {
         }
     

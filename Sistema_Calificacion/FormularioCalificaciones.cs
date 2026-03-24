@@ -13,10 +13,10 @@ namespace Sistema_Calificacion
 {
     public partial class FormularioCalificaciones : Form
     {
-        private SistemaCalificacionesDBEntities1 db;
+        private SistemaCalificacionesDBEntities28 db;
         public FormularioCalificaciones()
         {
-            db = new SistemaCalificacionesDBEntities1();
+            db = new SistemaCalificacionesDBEntities28();
             InitializeComponent();          
         }
 

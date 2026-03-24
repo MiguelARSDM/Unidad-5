@@ -13,10 +13,10 @@ namespace Sistema_Calificacion
 {
     public partial class FormularioEstudiantes : Form
     {
-        private SistemaCalificacionesDBEntities1 db;
+        private SistemaCalificacionesDBEntities28 db;
         public FormularioEstudiantes()
         {
-            db = new SistemaCalificacionesDBEntities1();
+            db = new SistemaCalificacionesDBEntities28();
             InitializeComponent();
         }
 
@@ -32,6 +32,11 @@ namespace Sistema_Calificacion
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            string txtID = txtInsertEstudianteID.Text.Trim();
+            string nombre = txtInsertNombre.Text.Trim();
+            string apellido = txtInsertApellido.Text.Trim();
+
+
 
         }
 
@@ -52,7 +57,6 @@ namespace Sistema_Calificacion
 
         private void cargarDatos()
         {
-
             var Estudiantes = db.Estudiantes.OrderBy( e => e.EstudianteID).Select( e => new 
             {
                 ID = e.EstudianteID,

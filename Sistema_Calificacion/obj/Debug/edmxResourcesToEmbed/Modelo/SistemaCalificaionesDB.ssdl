@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemaCalificacionesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Calificaciones">
+    <Key>
+      <PropertyRef Name="CalificacionID" />
+    </Key>
+    <Property Name="CalificacionID" Type="int" Nullable="false" />
+    <Property Name="EstudianteID" Type="int" Nullable="false" />
+    <Property Name="MateriaID" Type="int" Nullable="false" />
+    <Property Name="Calificacion1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion4" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Examen" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Clasificacion" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estudiantes">
+    <Key>
+      <PropertyRef Name="EstudianteID" />
+    </Key>
+    <Property Name="EstudianteID" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materias">
+    <Key>
+      <PropertyRef Name="MateriaID" />
+    </Key>
+    <Property Name="MateriaID" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Calificaciones_Estudiantes">
+    <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="1" />
+    <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiantes">
+        <PropertyRef Name="EstudianteID" />
+      </Principal>
+      <Dependent Role="Calificaciones">
+        <PropertyRef Name="EstudianteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificaciones_Materias">
+    <End Role="Materias" Type="Self.Materias" Multiplicity="1" />
+    <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materias">
+        <PropertyRef Name="MateriaID" />
+      </Principal>
+      <Dependent Role="Calificaciones">
+        <PropertyRef Name="MateriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SistemaCalificacionesDBModelStoreContainer">
+    <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materias" EntityType="Self.Materias" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Calificaciones_Estudiantes" Association="Self.FK_Calificaciones_Estudiantes">
+      <End Role="Estudiantes" EntitySet="Estudiantes" />
+      <End Role="Calificaciones" EntitySet="Calificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificaciones_Materias" Association="Self.FK_Calificaciones_Materias">
+      <End Role="Materias" EntitySet="Materias" />
+      <End Role="Calificaciones" EntitySet="Calificaciones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

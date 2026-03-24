@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemaCalificacionesDBModelStoreContainer" CdmEntityContainer="SistemaCalificacionesDBEntities28">
+    <EntitySetMapping Name="Calificaciones">
+      <EntityTypeMapping TypeName="SistemaCalificacionesDBModel.Calificacione">
+        <MappingFragment StoreEntitySet="Calificaciones">
+          <ScalarProperty Name="CalificacionID" ColumnName="CalificacionID" />
+          <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+          <ScalarProperty Name="MateriaID" ColumnName="MateriaID" />
+          <ScalarProperty Name="Calificacion1" ColumnName="Calificacion1" />
+          <ScalarProperty Name="Calificacion2" ColumnName="Calificacion2" />
+          <ScalarProperty Name="Calificacion3" ColumnName="Calificacion3" />
+          <ScalarProperty Name="Calificacion4" ColumnName="Calificacion4" />
+          <ScalarProperty Name="Examen" ColumnName="Examen" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estudiantes">
+      <EntityTypeMapping TypeName="SistemaCalificacionesDBModel.Estudiante">
+        <MappingFragment StoreEntitySet="Estudiantes">
+          <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materias">
+      <EntityTypeMapping TypeName="SistemaCalificacionesDBModel.Materia">
+        <MappingFragment StoreEntitySet="Materias">
+          <ScalarProperty Name="MateriaID" ColumnName="MateriaID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

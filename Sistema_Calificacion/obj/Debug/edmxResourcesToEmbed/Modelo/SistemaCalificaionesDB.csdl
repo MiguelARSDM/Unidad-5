@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemaCalificacionesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Calificacione">
+    <Key>
+      <PropertyRef Name="CalificacionID" />
+    </Key>
+    <Property Name="CalificacionID" Type="Int32" Nullable="false" />
+    <Property Name="EstudianteID" Type="Int32" Nullable="false" />
+    <Property Name="MateriaID" Type="Int32" Nullable="false" />
+    <Property Name="Calificacion1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion2" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion3" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Calificacion4" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Examen" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Clasificacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Estudiante" Relationship="Self.FK_Calificaciones_Estudiantes" FromRole="Calificaciones" ToRole="Estudiantes" />
+    <NavigationProperty Name="Materia" Relationship="Self.FK_Calificaciones_Materias" FromRole="Calificaciones" ToRole="Materias" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="EstudianteID" />
+    </Key>
+    <Property Name="EstudianteID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Estudiantes" FromRole="Estudiantes" ToRole="Calificaciones" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="MateriaID" />
+    </Key>
+    <Property Name="MateriaID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Materias" FromRole="Materias" ToRole="Calificaciones" />
+  </EntityType>
+  <Association Name="FK_Calificaciones_Estudiantes">
+    <End Role="Estudiantes" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiantes">
+        <PropertyRef Name="EstudianteID" />
+      </Principal>
+      <Dependent Role="Calificaciones">
+        <PropertyRef Name="EstudianteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificaciones_Materias">
+    <End Role="Materias" Type="Self.Materia" Multiplicity="1" />
+    <End Role="Calificaciones" Type="Self.Calificacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materias">
+        <PropertyRef Name="MateriaID" />
+      </Principal>
+      <Dependent Role="Calificaciones">
+        <PropertyRef Name="MateriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SistemaCalificacionesDBEntities28" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
+    <EntitySet Name="Estudiantes" EntityType="Self.Estudiante" />
+    <EntitySet Name="Materias" EntityType="Self.Materia" />
+    <AssociationSet Name="FK_Calificaciones_Estudiantes" Association="Self.FK_Calificaciones_Estudiantes">
+      <End Role="Estudiantes" EntitySet="Estudiantes" />
+      <End Role="Calificaciones" EntitySet="Calificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificaciones_Materias" Association="Self.FK_Calificaciones_Materias">
+      <End Role="Materias" EntitySet="Materias" />
+      <End Role="Calificaciones" EntitySet="Calificaciones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

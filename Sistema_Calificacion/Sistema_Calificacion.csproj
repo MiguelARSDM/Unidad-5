@@ -180,28 +180,28 @@
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Calificacione.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\DB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\DB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\DB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
+      <DependentUpon>SistemaCalificaionesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Estudiante.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SistemaCalificaionesDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Materia.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SistemaCalificaionesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SistemaCalificaionesDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaCalificaionesDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SistemaCalificaionesDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaCalificaionesDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SistemaCalificaionesDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaCalificaionesDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -226,12 +226,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Modelo\DB.edmx">
+    <EntityDeploy Include="Modelo\SistemaCalificaionesDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>SistemaCalificaionesDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
+    <None Include="Modelo\SistemaCalificaionesDB.edmx.diagram">
+      <DependentUpon>SistemaCalificaionesDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -249,15 +249,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base De Datos\SistemaCalificacionesDB.sql" />
-    <Content Include="Modelo\DB.Context.tt">
+    <Content Include="Modelo\SistemaCalificaionesDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>SistemaCalificaionesDB.edmx</DependentUpon>
+      <LastGenOutput>SistemaCalificaionesDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Modelo\DB.tt">
+    <Content Include="Modelo\SistemaCalificaionesDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
+      <DependentUpon>SistemaCalificaionesDB.edmx</DependentUpon>
+      <LastGenOutput>SistemaCalificaionesDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="CalificacionID" />
           </Key>
-          <Property Name="CalificacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CalificacionID" Type="int" Nullable="false" />
           <Property Name="EstudianteID" Type="int" Nullable="false" />
           <Property Name="MateriaID" Type="int" Nullable="false" />
           <Property Name="Calificacion1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="EstudianteID" />
           </Key>
-          <Property Name="EstudianteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstudianteID" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="MateriaID" />
           </Key>
-          <Property Name="MateriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MateriaID" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_Calificaciones_Estudiantes">
@@ -82,7 +82,7 @@
           <Key>
             <PropertyRef Name="CalificacionID" />
           </Key>
-          <Property Name="CalificacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CalificacionID" Type="Int32" Nullable="false" />
           <Property Name="EstudianteID" Type="Int32" Nullable="false" />
           <Property Name="MateriaID" Type="Int32" Nullable="false" />
           <Property Name="Calificacion1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
@@ -100,7 +100,7 @@
           <Key>
             <PropertyRef Name="EstudianteID" />
           </Key>
-          <Property Name="EstudianteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstudianteID" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Estudiantes" FromRole="Estudiantes" ToRole="Calificaciones" />
@@ -109,7 +109,7 @@
           <Key>
             <PropertyRef Name="MateriaID" />
           </Key>
-          <Property Name="MateriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MateriaID" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Calificaciones" Relationship="Self.FK_Calificaciones_Materias" FromRole="Materias" ToRole="Calificaciones" />
         </EntityType>
@@ -137,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SistemaCalificacionesDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SistemaCalificacionesDBEntities28" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Calificaciones" EntityType="Self.Calificacione" />
           <EntitySet Name="Estudiantes" EntityType="Self.Estudiante" />
           <EntitySet Name="Materias" EntityType="Self.Materia" />
@@ -155,7 +155,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SistemaCalificacionesDBModelStoreContainer" CdmEntityContainer="SistemaCalificacionesDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="SistemaCalificacionesDBModelStoreContainer" CdmEntityContainer="SistemaCalificacionesDBEntities28">
           <EntitySetMapping Name="Calificaciones">
             <EntityTypeMapping TypeName="SistemaCalificacionesDBModel.Calificacione">
               <MappingFragment StoreEntitySet="Calificaciones">
