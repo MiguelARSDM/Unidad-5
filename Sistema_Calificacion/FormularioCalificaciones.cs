@@ -34,7 +34,16 @@ namespace Sistema_Calificacion
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            string txtCalificacionID = txtInsertCalificacionID.Text.Trim();
+            string calificacion1 = txtInsertCalificacion1.Text.Trim();
+            string calificacion2 = txtInsertCalificacion2.Text.Trim();
+            string calificacion3 = txtInsertCalificacion3.Text.Trim();
+            string calificacion4 = txtInsertCalificacion4.Text.Trim();
+            string Examen = txtInsertExamen.Text.Trim();
 
+            
+            
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -57,8 +66,8 @@ namespace Sistema_Calificacion
             var Calificaciones = db.Calificaciones.OrderBy( c => c.CalificacionID).Select( c => new 
             {
                 CalificacionID =c.CalificacionID,
-                EstudianteID = c.EstudianteID,
-                MateriaID = c.MateriaID,
+                EstudianteID = c.Estudiante.Nombre + " " + c.Estudiante.Apellido,
+                MateriaID = c.Materia.Nombre,
                 Calificacion1 = c.Calificacion1,
                 Calificacion2 = c.Calificacion2,
                 Calificacion3 = c.Calificacion3,
@@ -72,17 +81,17 @@ namespace Sistema_Calificacion
 
             tablaContenido.DataSource = Calificaciones;
 
-            tablaContenido.Columns["CalificacionID"].Width = 84;
-            tablaContenido.Columns["EstudianteID"].Width = 84;
-            tablaContenido.Columns["MateriaID"].Width = 68;
-            tablaContenido.Columns["Calificacion1"].Width = 82;
-            tablaContenido.Columns["Calificacion2"].Width = 82;
-            tablaContenido.Columns["Calificacion3"].Width = 82;
-            tablaContenido.Columns["Calificacion4"].Width = 82;
-            tablaContenido.Columns["Examen"].Width = 60;
-            tablaContenido.Columns["Total"].Width = 60;
-            tablaContenido.Columns["Clasificacion"].Width = 84;
-            tablaContenido.Columns["Estado"].Width = 80;
+            tablaContenido.Columns["CalificacionID"].Width = 80;
+            tablaContenido.Columns["EstudianteID"].Width = 180;
+            tablaContenido.Columns["MateriaID"].Width = 150;
+            tablaContenido.Columns["Calificacion1"].Width = 74;
+            tablaContenido.Columns["Calificacion2"].Width = 74;
+            tablaContenido.Columns["Calificacion3"].Width = 74;
+            tablaContenido.Columns["Calificacion4"].Width = 74;
+            tablaContenido.Columns["Examen"].Width = 52;
+            tablaContenido.Columns["Total"].Width = 52;
+            tablaContenido.Columns["Clasificacion"].Width = 70;
+            tablaContenido.Columns["Estado"].Width = 70;
         }
 
         private void cargarEstudiantes() 

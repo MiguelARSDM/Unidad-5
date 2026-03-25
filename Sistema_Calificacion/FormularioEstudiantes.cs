@@ -36,17 +36,133 @@ namespace Sistema_Calificacion
             string nombre = txtInsertNombre.Text.Trim();
             string apellido = txtInsertApellido.Text.Trim();
 
+            if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1) 
+            {
+                MessageBox.Show("El ID Deber Ser Un Numero Positivo");
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Llena El Campo Nombre");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(apellido))
+            {
+                MessageBox.Show("Llena El Campo Apellido");
+                return;
+            }
+
+            if (db.Estudiantes.Any( E => E.EstudianteID == id)) 
+            {
+                MessageBox.Show($"Ya Existe Un Estudiante con el {id}");
+                return;
+            }
+
+            try
+            {
+                var estudiante = new Estudiante()
+                {
+                    EstudianteID = Convert.ToInt32(txtID),
+                    Nombre = nombre,
+                    Apellido = apellido
+                };
+                db.Estudiantes.Add(estudiante);
+                db.SaveChanges();
+
+                MessageBox.Show("Exito Al Insertar Estudiante");
+
+                cargarDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Al Insertar Estudiante");
+            }
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            string txtID = txtElimEstudianteID.Text.Trim();
+
+            if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id))
+            {
+                MessageBox.Show("El ID debe ser un Numero Positivo");
+                return;
+            }   
+            
+
+            try
+            {
+                var estudiante = db.Estudiantes.Find(id);
+
+                if (estudiante == null) 
+                {
+                    MessageBox.Show($"No Existe Estudiante Con ID {id}");
+                    return;
+                }
+
+                db.Estudiantes.Remove(estudiante);
+
+                db.SaveChanges();
+
+                cargarDatos();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("");
+            }
+
 
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            string txtID = txtActEstudianteID.Text.Trim();
+            string nombre = txtActNombre.Text.Trim();
+            string apellido = txtActApellido.Text.Trim();
+
+            if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1) 
+            {
+                MessageBox.Show("El ID debe ser un numero Positiov");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(nombre)) 
+            {
+                MessageBox.Show("Llenar el campo nombre");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(apellido)) 
+            {
+                MessageBox.Show("Llenar el campo apellido");
+                return;
+            }
+
+         
+
+            try
+            {
+                var estudiante = db.Estudiantes.Find(id);
+
+                if (estudiante == null) 
+                {
+                    MessageBox.Show($"No Existe Estudiante con ID {id}");
+                    return;
+                }
+
+                estudiante.Nombre = nombre;
+                estudiante.Apellido = apellido;
+
+                db.SaveChanges();
+                cargarDatos();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Error al actualizar");
+            }
 
         }
 
