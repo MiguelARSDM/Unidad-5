@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|c:\\users\\migue\\desktop\\unidad 5 final\\unidad-5\\sistema_calificacion\\formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formularioestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|solutionrelative:formulariocalificaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{090D3156-1AA9-4F65-93A0-9F107D59188B}|Sistema_Calificacion.csproj|C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\formulariomaterias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,19 +43,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FormularioCalificaciones.cs",
+              "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs",
+              "RelativeDocumentMoniker": "FormularioCalificaciones.cs",
+              "ToolTip": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs",
+              "RelativeToolTip": "FormularioCalificaciones.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwEAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:30:14.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormularioCalificaciones.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs",
+              "RelativeDocumentMoniker": "FormularioCalificaciones.cs",
+              "ToolTip": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioCalificaciones.cs [Design]",
+              "RelativeToolTip": "FormularioCalificaciones.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:30:12.412Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FormularioEstudiantes.cs",
               "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs",
               "RelativeDocumentMoniker": "FormularioEstudiantes.cs",
               "ToolTip": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs",
               "RelativeToolTip": "FormularioEstudiantes.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAMwJcAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAMwJcAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T21:34:56.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "FormularioEstudiantes.cs [Design]",
               "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioEstudiantes.cs",
               "RelativeDocumentMoniker": "FormularioEstudiantes.cs",
@@ -59,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FormularioMaterias.cs",
               "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs",
               "RelativeDocumentMoniker": "FormularioMaterias.cs",
@@ -67,20 +100,18 @@
               "RelativeToolTip": "FormularioMaterias.cs",
               "ViewState": "AgIAAIYAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T20:45:33.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T20:45:33.345Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "FormularioMaterias.cs [Design]",
               "DocumentMoniker": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs",
               "RelativeDocumentMoniker": "FormularioMaterias.cs",
               "ToolTip": "C:\\Users\\migue\\Desktop\\Unidad 5 Final\\Unidad-5\\Sistema_Calificacion\\FormularioMaterias.cs [Design]",
               "RelativeToolTip": "FormularioMaterias.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T20:44:36.619Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-03-24T20:44:36.619Z"
             }
           ]
         }
