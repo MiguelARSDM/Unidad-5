@@ -1,4 +1,7 @@
-﻿using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using Sistema_Calificacion.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema_Calificacion.Modelo;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.IO;
 
 namespace Sistema_Calificacion
 {
@@ -38,25 +44,29 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1) 
             {
-                MessageBox.Show("El ID Deber Ser Un Numero Positivo");
+                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
+                txtInsertEstudianteID.Focus();
+                return;
+            }
+
+            if (db.Estudiantes.Any(E => E.EstudianteID == id))
+            {
+                MessageBox.Show($"Ya Existe un estudiante registrado con ID: {id}");
+                txtInsertEstudianteID.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Llena El Campo Nombre");
+                MessageBox.Show("Llena el campo Nombre");
+                txtInsertNombre.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(apellido))
             {
-                MessageBox.Show("Llena El Campo Apellido");
-                return;
-            }
-
-            if (db.Estudiantes.Any( E => E.EstudianteID == id)) 
-            {
-                MessageBox.Show($"Ya Existe Un Estudiante con el {id}");
+                MessageBox.Show("Llena el campo Apellido");
+                txtInsertApellido.Focus();
                 return;
             }
 
@@ -64,20 +74,24 @@ namespace Sistema_Calificacion
             {
                 var estudiante = new Estudiante()
                 {
-                    EstudianteID = Convert.ToInt32(txtID),
+                    EstudianteID = id,
                     Nombre = nombre,
                     Apellido = apellido
                 };
                 db.Estudiantes.Add(estudiante);
                 db.SaveChanges();
 
-                MessageBox.Show("Exito Al Insertar Estudiante");
+                MessageBox.Show($"Exito al insertar estudiante con ID: {id}");
 
                 cargarDatos();
+
+                txtInsertEstudianteID.Clear();
+                txtInsertNombre.Clear();
+                txtInsertApellido.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Al Insertar Estudiante");
+                MessageBox.Show("Error al insertar estudiante " + ex.Message);
             }
 
         }
@@ -88,10 +102,10 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id))
             {
-                MessageBox.Show("El ID debe ser un Numero Positivo");
+                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
+                txtElimEstudianteID.Focus();
                 return;
             }   
-            
 
             try
             {
@@ -99,7 +113,8 @@ namespace Sistema_Calificacion
 
                 if (estudiante == null) 
                 {
-                    MessageBox.Show($"No Existe Estudiante Con ID {id}");
+                    MessageBox.Show($"No Existe estudiante registrado con ID {id}");
+                    txtElimEstudianteID.Focus();
                     return;
                 }
 
@@ -107,11 +122,15 @@ namespace Sistema_Calificacion
 
                 db.SaveChanges();
 
+                MessageBox.Show($"Exito al eliminar estudiante con ID: {id}");
+
                 cargarDatos();
+
+                txtElimEstudianteID.Clear();
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("");
+                MessageBox.Show("Error al eliminar estudiante " + ex.Message);
             }
 
 
@@ -125,23 +144,24 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1) 
             {
-                MessageBox.Show("El ID debe ser un numero Positiov");
+                MessageBox.Show("Llenar el campo EstudianteID con un numero positivo");
+                txtActEstudianteID.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(nombre)) 
             {
                 MessageBox.Show("Llenar el campo nombre");
+                txtActNombre.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(apellido)) 
             {
                 MessageBox.Show("Llenar el campo apellido");
+                txtActApellido.Focus();
                 return;
             }
-
-         
 
             try
             {
@@ -149,7 +169,7 @@ namespace Sistema_Calificacion
 
                 if (estudiante == null) 
                 {
-                    MessageBox.Show($"No Existe Estudiante con ID {id}");
+                    MessageBox.Show($"No existe estudiante registrado con ID: {id}");
                     return;
                 }
 
@@ -158,17 +178,68 @@ namespace Sistema_Calificacion
 
                 db.SaveChanges();
                 cargarDatos();
+
+                txtActEstudianteID.Clear();
+                txtActNombre.Clear();
+                txtActApellido.Clear();
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Error al actualizar");
+                MessageBox.Show("Error al actualizar " + ex.Message);
             }
 
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-
+            var estudiantes = db.Estudiantes.OrderBy(es => es.EstudianteID)
+         .Select(es => new 
+         { 
+             ID = es.EstudianteID, Nombre = es.Nombre, Apellido = es.Apellido 
+         })
+         .ToList();
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Estudiantes";
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                try
+                {
+                    if (sfd.FilterIndex == 1)
+                    {
+                        var sb = new StringBuilder();
+                        sb.AppendLine("EstudianteID,Nombre,Apellido");
+                        foreach (var es in estudiantes)
+                            sb.AppendLine($"{es.ID},{es.Nombre},{es.Apellido}");
+                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                    }
+                    else
+                    {
+                        using (var writer = new PdfWriter(sfd.FileName))
+                        using (var pdf = new PdfDocument(writer))
+                        {
+                            var doc = new Document(pdf);
+                            var tabla = new Table(3);
+                            tabla.AddHeaderCell("EstudianteID");
+                            tabla.AddHeaderCell("Nombre");
+                            tabla.AddHeaderCell("Apellido");
+                            foreach (var es in estudiantes)
+                            {
+                                tabla.AddCell(es.ID.ToString());
+                                tabla.AddCell(es.Nombre);
+                                tabla.AddCell(es.Apellido);
+                            }
+                            doc.Add(tabla);
+                            doc.Close();
+                        }
+                    }
+                    MessageBox.Show("Exportado correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
 
         private void cargarDatos()

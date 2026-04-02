@@ -41,25 +41,29 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1) 
             {
-                MessageBox.Show("Llenar El Campo ID Con Un Numero Positivo");
+                MessageBox.Show("Llenar el campo MateriaID con un número positivo");
+                txtInsertMateriaID.Focus();
                 return;
             }
 
             if (db.Materias.Any(m => m.MateriaID == id)) 
             {
-                MessageBox.Show($"Ya Existe Una Materia Con El ID {id}");
+                MessageBox.Show($"Ya existe una materia registrada con el ID: {id}");
+                txtInsertMateriaID.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Llenar El Campo Nombre");
+                MessageBox.Show("Llenar el campo Nombre");
+                txtInsertNombre.Focus();
                 return;
             }
 
             if (nombre.Length < 1 || nombre.Length > 100)
             {
-                MessageBox.Show("El Campo Nombre Deber Tener Entre 1 Hasta 100 Caracteres");
+                MessageBox.Show("El campo Nombre deber tener entre 1 hasta 100 caracteres");
+                txtInsertNombre.Focus();
                 return;
             }
 
@@ -74,7 +78,7 @@ namespace Sistema_Calificacion
                 db.Materias.Add(materia);
                 db.SaveChanges();
 
-                MessageBox.Show("Exito Al Insertar");
+                MessageBox.Show($"Exito al insertar la materia con ID: {id}");
 
                 cargarDatos();
 
@@ -83,7 +87,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Al Insertar");
+                MessageBox.Show("Error al insertar materia " + ex.Message);
             }
         }
 
@@ -93,7 +97,8 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1)
             {
-                MessageBox.Show("Debes Introducir Un ID Valido");
+                MessageBox.Show("Llenar el campo ID con un número positivo");
+                txtElimMateriaID.Focus();
                 return;
             }
 
@@ -103,21 +108,22 @@ namespace Sistema_Calificacion
 
                 if (materia == null)
                 {
-                    MessageBox.Show($"No Hay Materia Con EL ID {id}");
+                    MessageBox.Show($"No hay materia registrada con el ID: {id}");
+                    txtElimMateriaID.Focus();
                     return;
                 }
 
-                var confirmacion = MessageBox.Show($"Deseas Eliminar La Materia {materia.Nombre}?","Confirmar",MessageBoxButtons.YesNo);
+                /*var confirmacion = MessageBox.Show($"Deseas Eliminar La Materia {materia.Nombre}?","Confirmar",MessageBoxButtons.YesNo);
 
                 if (confirmacion == DialogResult.No) 
                 {
                     return;
-                }
+                }*/
 
                 db.Materias.Remove(materia);
                 db.SaveChanges();
 
-                MessageBox.Show("Exito Al Eliminar Materia");
+                MessageBox.Show($"Exito al eliminar la materia registrada con el ID: {id}");
 
                 cargarDatos();
                 
@@ -125,7 +131,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Error Al Eliminar Materia");
+                MessageBox.Show("Error al eliminar Materia " + ex.Message);
             }
 
         }
@@ -137,19 +143,22 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1)
             {
-                MessageBox.Show("Debes Introducir Un ID Valido");
+                MessageBox.Show("Llenar el campo MateriaID con un número positivo");
+                txtActMateriaID.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                MessageBox.Show("Llenar El Campo Nombre");
+                MessageBox.Show("Llenar el campo Nombre");
+                txtActNombre.Focus();
                 return;
             }
 
             if (nombre.Length < 1 || nombre.Length > 100)
             {
-                MessageBox.Show("El Campo Nombre Deber Tener Entre 1 Hasta 100 Caracteres");
+                MessageBox.Show("El campo Nombre deber tener entre 1 hasta 100 caracteres");
+                txtActNombre.Focus();
                 return;
             }
 
@@ -159,12 +168,14 @@ namespace Sistema_Calificacion
 
                 if ( materia == null)
                 {
-                    MessageBox.Show($"No Existe Una Materia Con El ID {id}");
+                    MessageBox.Show($"No existe materia registrada con ID: {id}");
+                    txtActMateriaID.Focus();
                     return;
                 }
+
                 materia.Nombre = nombre;
 
-                MessageBox.Show("Exito Al Actualizar");
+                MessageBox.Show($"Exito al actualizar materia registrada con ID: {id}");
 
                 db.SaveChanges();
 
@@ -175,7 +186,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Al Actualizar");
+                MessageBox.Show("Error al actualizar materia " + ex.Message );
             }
 
 
@@ -183,8 +194,49 @@ namespace Sistema_Calificacion
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            //Exporta a PDF y CSV
-
+            var materias = db.Materias.OrderBy(m => m.MateriaID)
+        .Select(m => new { ID = m.MateriaID, Nombre = m.Nombre })
+        .ToList();
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Materias";
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                try
+                {
+                    if (sfd.FilterIndex == 1)
+                    {
+                        var sb = new StringBuilder();
+                        sb.AppendLine("MateriaID,Nombre");
+                        foreach (var m in materias)
+                            sb.AppendLine($"{m.ID},{m.Nombre}");
+                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                    }
+                    else
+                    {
+                        using (var writer = new PdfWriter(sfd.FileName))
+                        using (var pdf = new PdfDocument(writer))
+                        {
+                            var doc = new Document(pdf);
+                            var tabla = new Table(2);
+                            tabla.AddHeaderCell("MateriaID");
+                            tabla.AddHeaderCell("Nombre");
+                            foreach (var m in materias)
+                            {
+                                tabla.AddCell(m.ID.ToString());
+                                tabla.AddCell(m.Nombre);
+                            }
+                            doc.Add(tabla);
+                            doc.Close();
+                        }
+                    }
+                    MessageBox.Show("Exportado correctamente.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
 
         private void cargarDatos() 
@@ -201,8 +253,6 @@ namespace Sistema_Calificacion
             tablaContenido.Columns["ID"].Width = 100;
             tablaContenido.Columns["Nombre"].Width = 520;
         }
-
-        
 
     }
 }
