@@ -208,7 +208,7 @@ namespace Sistema_Calificacion
                         ExportarPDF(cuadroGuardar.FileName, materias);
                     }
 
-                    MessageBox.Show("Éxito al exportar materias");
+                    MessageBox.Show("Éxito al exportar materias registradas");
                 }
                 catch (Exception ex)
                 {

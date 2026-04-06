@@ -63,9 +63,23 @@ namespace Sistema_Calificacion
                 return;
             }
 
+            if (nombre.Length < 1 || nombre.Length > 100) 
+            {
+                MessageBox.Show("El campo Nombre deber tener entre 1 hasta 100 caracteres");
+                txtInsertNombre.Focus();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(apellido))
             {
                 MessageBox.Show("Llena el campo Apellido");
+                txtInsertApellido.Focus();
+                return;
+            }
+
+            if (apellido.Length < 1 || apellido.Length > 100)
+            {
+                MessageBox.Show("El campo Apellido deber tener entre 1 hasta 100 caracteres");
                 txtInsertApellido.Focus();
                 return;
             }
@@ -81,7 +95,7 @@ namespace Sistema_Calificacion
                 db.Estudiantes.Add(estudiante);
                 db.SaveChanges();
 
-                MessageBox.Show($"Exito al insertar estudiante con ID: {id}");
+                MessageBox.Show($"Éxito al insertar estudiante con ID: {id}");
 
                 cargarDatos();
 
@@ -122,7 +136,7 @@ namespace Sistema_Calificacion
 
                 db.SaveChanges();
 
-                MessageBox.Show($"Exito al eliminar estudiante con ID: {id}");
+                MessageBox.Show($"Éxito al eliminar estudiante con ID: {id}");
 
                 cargarDatos();
 
@@ -156,9 +170,23 @@ namespace Sistema_Calificacion
                 return;
             }
 
+            if (nombre.Length < 1 || nombre.Length > 100)
+            {
+                MessageBox.Show("El campo Nombre deber tener entre 1 hasta 100 caracteres");
+                txtActNombre.Focus();
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(apellido)) 
             {
                 MessageBox.Show("Llenar el campo apellido");
+                txtActApellido.Focus();
+                return;
+            }
+
+            if (apellido.Length < 1 || apellido.Length > 100)
+            {
+                MessageBox.Show("El campo Apellido deber tener entre 1 hasta 100 caracteres");
                 txtActApellido.Focus();
                 return;
             }
@@ -167,7 +195,7 @@ namespace Sistema_Calificacion
             {
                 var estudiante = db.Estudiantes.Find(id);
 
-                if (estudiante == null) 
+                if (estudiante == null)
                 {
                     MessageBox.Show($"No existe estudiante registrado con ID: {id}");
                     return;
@@ -177,6 +205,9 @@ namespace Sistema_Calificacion
                 estudiante.Apellido = apellido;
 
                 db.SaveChanges();
+
+                MessageBox.Show($"Éxito al actualizar el estudiante registrado con ID: {id}");
+                
                 cargarDatos();
 
                 txtActEstudianteID.Clear();
@@ -192,53 +223,70 @@ namespace Sistema_Calificacion
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            var estudiantes = db.Estudiantes.OrderBy(es => es.EstudianteID)
-         .Select(es => new 
-         { 
-             ID = es.EstudianteID, Nombre = es.Nombre, Apellido = es.Apellido 
-         })
-         .ToList();
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            var estudiantes = db.Estudiantes.OrderBy(es => es.EstudianteID).ToList();
+
+
+            using (SaveFileDialog cuadroGuardar = new SaveFileDialog())
             {
-                sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
-                sfd.FileName = "Estudiantes";
-                if (sfd.ShowDialog() != DialogResult.OK) return;
+                cuadroGuardar.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
+                cuadroGuardar.FileName = "Estudiantes";
+                if (cuadroGuardar.ShowDialog() != DialogResult.OK) return;
                 try
                 {
-                    if (sfd.FilterIndex == 1)
+                    if (cuadroGuardar.FilterIndex == 1)
                     {
-                        var sb = new StringBuilder();
-                        sb.AppendLine("EstudianteID,Nombre,Apellido");
-                        foreach (var es in estudiantes)
-                            sb.AppendLine($"{es.ID},{es.Nombre},{es.Apellido}");
-                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                        ExportarCSV(cuadroGuardar.FileName, estudiantes);
                     }
                     else
                     {
-                        using (var writer = new PdfWriter(sfd.FileName))
-                        using (var pdf = new PdfDocument(writer))
-                        {
-                            var doc = new Document(pdf);
-                            var tabla = new Table(3);
-                            tabla.AddHeaderCell("EstudianteID");
-                            tabla.AddHeaderCell("Nombre");
-                            tabla.AddHeaderCell("Apellido");
-                            foreach (var es in estudiantes)
-                            {
-                                tabla.AddCell(es.ID.ToString());
-                                tabla.AddCell(es.Nombre);
-                                tabla.AddCell(es.Apellido);
-                            }
-                            doc.Add(tabla);
-                            doc.Close();
-                        }
+                        ExportarPDF(cuadroGuardar.FileName, estudiantes);
                     }
-                    MessageBox.Show("Exportado correctamente.");
+                    MessageBox.Show("Éxito al exportar estudiantes registrados");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
+            }
+        }
+
+        private void ExportarCSV(string rutaArchivo, List<Estudiante> estudiantes)
+        {
+            var contenidoCSV = new StringBuilder();
+
+            contenidoCSV.AppendLine("EstudianteID,Nombre,Apellido");
+
+            foreach (var estudiante in estudiantes)
+            {
+                string nombre = estudiante.Nombre.Replace("\"", "\"\"");
+                string apellido = estudiante.Apellido.Replace("\"", "\"\"");
+                contenidoCSV.AppendLine($"{estudiante.EstudianteID},{nombre},{apellido}");
+            }
+
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+        }
+
+        private void ExportarPDF(string rutaArchivo, List<Estudiante> estudiantes)
+        {
+            using (var writer = new PdfWriter(rutaArchivo))
+            using (var documentoPDF = new PdfDocument(writer))
+            using (var documento = new Document(documentoPDF))
+            {
+           
+                var tabla = new Table(3);
+               
+                tabla.AddHeaderCell("EstudianteID");
+                tabla.AddHeaderCell("Nombre");
+                tabla.AddHeaderCell("Apellido");
+               
+                foreach (var es in estudiantes)
+                {
+                    tabla.AddCell(es.EstudianteID.ToString());
+                    tabla.AddCell(es.Nombre);
+                    tabla.AddCell(es.Apellido);
+                }
+               
+                documento.Add(tabla);   
             }
         }
 
