@@ -281,19 +281,21 @@ namespace Sistema_Calificacion
                 c.Clasificacion,
                 c.Estado
             }).ToList();
+
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
                 sfd.FileName = "Calificaciones";
                 if (sfd.ShowDialog() != DialogResult.OK) return;
+
                 try
                 {
                     if (sfd.FilterIndex == 1)
                     {
                         var sb = new StringBuilder();
-                        sb.AppendLine("CalificacionID,Estudiante,Materia,Calificacion1,Calificacion2,Calificacion3,Calificacion4,Examen,Total,Clasificacion,Estado");
+                        sb.AppendLine("CalificaciónID, Estudiante, Materia, Calificación 1, Calificacion 2, Calificación 3,Calificación 4, Examen, Total, Clasificación, Estado");
                         foreach (var c in calificaciones)
-                            sb.AppendLine($"{c.CalificacionID},{c.Estudiante},{c.Materia},{c.Calificacion1},{c.Calificacion2},{c.Calificacion3},{c.Calificacion4},{c.Examen},{c.Total},{c.Clasificacion},{c.Estado}");
+                            sb.AppendLine($"{c.CalificacionID}, {c.Estudiante}, {c.Materia}, {c.Calificacion1}, {c.Calificacion2}, {c.Calificacion3}, dedcx6e{c.Calificacion4},{c.Examen},{c.Total},{c.Clasificacion},{c.Estado}");
                         File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
                     }
                     else
@@ -308,10 +310,10 @@ namespace Sistema_Calificacion
                             tabla.AddHeaderCell("ID");
                             tabla.AddHeaderCell("Estudiante");
                             tabla.AddHeaderCell("Materia");
-                            tabla.AddHeaderCell("Cal.1");
-                            tabla.AddHeaderCell("Cal.2");
-                            tabla.AddHeaderCell("Cal.3");
-                            tabla.AddHeaderCell("Cal.4");
+                            tabla.AddHeaderCell("Calificación 1");
+                            tabla.AddHeaderCell("Calificación 2");
+                            tabla.AddHeaderCell("Calificación 3");
+                            tabla.AddHeaderCell("Calificación 4");
                             tabla.AddHeaderCell("Examen");
                             tabla.AddHeaderCell("Total");
                             tabla.AddHeaderCell("Clasif.");
@@ -358,7 +360,6 @@ namespace Sistema_Calificacion
                 Total = c.Total,
                 Clasificacion = c.Clasificacion,
                 Estado = c.Estado
-
             }).ToList();
 
             tablaContenido.DataSource = Calificaciones;
@@ -376,7 +377,7 @@ namespace Sistema_Calificacion
             tablaContenido.Columns["Estado"].Width = 70;
         }
 
-        private void cargarEstudiantes()
+        private void cargarEstudiantes() 
         {
             var estudiantes = db.Estudiantes.OrderBy(e => e.EstudianteID).Select(e => new
             {
@@ -388,14 +389,12 @@ namespace Sistema_Calificacion
             cmbInsertEstudianteID.DataSource = estudiantes;
             cmbInsertEstudianteID.DisplayMember = "NombreCompleto";
             cmbInsertEstudianteID.ValueMember = "ID";
-
             cmbInsertEstudianteID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbInsertEstudianteID.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             cmbActEstudianteID.DataSource = estudiantes;
             cmbActEstudianteID.DisplayMember = "NombreCompleto";
             cmbActEstudianteID.ValueMember = "ID";
-
             cmbActEstudianteID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbActEstudianteID.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
@@ -411,14 +410,12 @@ namespace Sistema_Calificacion
             cmbInsertMateriaID.DataSource = materias;
             cmbInsertMateriaID.DisplayMember = "Nombre";
             cmbInsertMateriaID.ValueMember = "ID";
-
             cmbActMateriaID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbActMateriaID.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             cmbActMateriaID.DataSource = materias;
             cmbActMateriaID.DisplayMember = "Nombre";
             cmbActMateriaID.ValueMember = "ID";
-
             cmbActMateriaID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbActMateriaID.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
@@ -426,20 +423,17 @@ namespace Sistema_Calificacion
 
         private decimal CalcularTotal(decimal cal1, decimal cal2, decimal cal3, decimal cal4, decimal exam)
         {
-            decimal totalCal = (cal1 + cal2 + cal3 + cal4) / 4;
+            decimal totalCal = (cal1 + cal2 + cal3 + cal4) / 4; 
             totalCal = totalCal * 0.70m;
+
             decimal totalExam = exam * 0.30m;
 
-            decimal total = totalCal + totalExam;
-            return total;
+            return totalCal + totalExam;
         }
-
-  
-
         private string CalcularClasificacion(decimal total)
         {
             if (total >= 90)
-                return "A";
+               return "A";
             if (total >= 80)
                 return "B";
             if (total >= 70)
@@ -447,7 +441,6 @@ namespace Sistema_Calificacion
 
             return "F";
         }
-
         private string CalcularEstado(decimal total) 
         {
             return total >= 70 ? "Aprobado" : "Reprobado";

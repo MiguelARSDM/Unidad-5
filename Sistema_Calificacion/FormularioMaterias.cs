@@ -78,7 +78,7 @@ namespace Sistema_Calificacion
                 db.Materias.Add(materia);
                 db.SaveChanges();
 
-                MessageBox.Show($"Exito al insertar la materia con ID: {id}");
+                MessageBox.Show($"Éxito al insertar la materia con ID: {id}");
 
                 cargarDatos();
 
@@ -87,7 +87,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al insertar materia " + ex.Message);
+                MessageBox.Show("Error al insertar materia :" + ex.Message);
             }
         }
 
@@ -113,17 +113,10 @@ namespace Sistema_Calificacion
                     return;
                 }
 
-                /*var confirmacion = MessageBox.Show($"Deseas Eliminar La Materia {materia.Nombre}?","Confirmar",MessageBoxButtons.YesNo);
-
-                if (confirmacion == DialogResult.No) 
-                {
-                    return;
-                }*/
-
                 db.Materias.Remove(materia);
                 db.SaveChanges();
 
-                MessageBox.Show($"Exito al eliminar la materia registrada con el ID: {id}");
+                MessageBox.Show($"Éxito al eliminar la materia registrada con el ID: {id}");
 
                 cargarDatos();
                 
@@ -131,7 +124,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Error al eliminar Materia " + ex.Message);
+                MessageBox.Show("Error al eliminar Materia :" + ex.Message);
             }
 
         }
@@ -175,7 +168,7 @@ namespace Sistema_Calificacion
 
                 materia.Nombre = nombre;
 
-                MessageBox.Show($"Exito al actualizar materia registrada con ID: {id}");
+                MessageBox.Show($"Éxito al actualizar materia registrada con ID: {id}");
 
                 db.SaveChanges();
 
@@ -194,50 +187,75 @@ namespace Sistema_Calificacion
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            var materias = db.Materias.OrderBy(m => m.MateriaID)
-        .Select(m => new { ID = m.MateriaID, Nombre = m.Nombre })
-        .ToList();
-            using (SaveFileDialog sfd = new SaveFileDialog())
+          
+            var materias = db.Materias.OrderBy(m => m.MateriaID).ToList();
+
+            using (SaveFileDialog cuadroGuardar = new SaveFileDialog())
             {
-                sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
-                sfd.FileName = "Materias";
-                if (sfd.ShowDialog() != DialogResult.OK) return;
+                cuadroGuardar.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
+                cuadroGuardar.FileName = "Materias";
+
+                if (cuadroGuardar.ShowDialog() != DialogResult.OK) return;
+
                 try
                 {
-                    if (sfd.FilterIndex == 1)
+                    if (cuadroGuardar.FilterIndex == 1)
                     {
-                        var sb = new StringBuilder();
-                        sb.AppendLine("MateriaID,Nombre");
-                        foreach (var m in materias)
-                            sb.AppendLine($"{m.ID},{m.Nombre}");
-                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                        ExportarCSV(cuadroGuardar.FileName, materias);
                     }
                     else
                     {
-                        using (var writer = new PdfWriter(sfd.FileName))
-                        using (var pdf = new PdfDocument(writer))
-                        {
-                            var doc = new Document(pdf);
-                            var tabla = new Table(2);
-                            tabla.AddHeaderCell("MateriaID");
-                            tabla.AddHeaderCell("Nombre");
-                            foreach (var m in materias)
-                            {
-                                tabla.AddCell(m.ID.ToString());
-                                tabla.AddCell(m.Nombre);
-                            }
-                            doc.Add(tabla);
-                            doc.Close();
-                        }
+                        ExportarPDF(cuadroGuardar.FileName, materias);
                     }
-                    MessageBox.Show("Exportado correctamente.");
+
+                    MessageBox.Show("Éxito al exportar materias");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error al exportar materias :" + ex.Message);
                 }
+
             }
         }
+
+        private void ExportarCSV(string rutaArchivo, List<Materia> materias)
+        {
+            var contenidoCSV = new StringBuilder();
+           
+            contenidoCSV.AppendLine("MateriaID,Nombre");
+
+            foreach (var materia in materias)
+            {
+                string nombre = materia.Nombre.Replace("\"", "\"\"");
+                contenidoCSV.AppendLine($"{materia.MateriaID},\"{nombre}\"");
+            }
+
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+        }
+
+        private void ExportarPDF(string rutaArchivo, List<Materia> materias)
+        {
+
+            using (var writerPDF = new PdfWriter(rutaArchivo))
+            using (var documentoPDF = new PdfDocument(writerPDF))
+            using (var documento = new Document(documentoPDF))
+            {     
+                var tabla = new Table(2);
+              
+                tabla.AddHeaderCell("MateriaID");
+                tabla.AddHeaderCell("Nombre");
+               
+                foreach (var materia in materias)
+                {
+                    tabla.AddCell(materia.MateriaID.ToString());
+                    tabla.AddCell(materia.Nombre);
+                }
+
+                documento.Add(tabla);
+            }
+        
+        }
+
 
         private void cargarDatos() 
         {
