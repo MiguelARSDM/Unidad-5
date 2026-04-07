@@ -1,18 +1,19 @@
-﻿using System;
+﻿using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using Sistema_Calificacion.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sistema_Calificacion.Modelo;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using System.IO;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Sistema_Calificacion
 {
@@ -53,12 +54,14 @@ namespace Sistema_Calificacion
             if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 0 || calID > 100)
             {
                 MessageBox.Show("Llenar el campo CalificacionID con un numero positivo");
+                txtInsertCalificacionID.Focus();
                 return;
             }
 
             if (db.Calificaciones.Any(c => c.CalificacionID == calID)) 
             {
                 MessageBox.Show($"Ya hay una calificacion regitrada con el ID: {calID}");
+                txtInsertCalificacionID.Focus();
                 return;
             }
 
@@ -84,30 +87,35 @@ namespace Sistema_Calificacion
             if (string.IsNullOrEmpty(calificacion1) || !int.TryParse(calificacion1, out int cal1) || cal1 < 0 || cal1 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 1 con un numero positivo entre 0 hasta 100");
+                txtInsertCalificacion1.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion2) || !int.TryParse(calificacion2, out int cal2) || cal2 < 0 || cal2 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 2 con un numero positivo entre 0 hasta 100");
+                txtInsertCalificacion2.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion3) || !int.TryParse(calificacion3, out int cal3) || cal3 < 0 || cal3 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 3 con un numero positivo entre 0 hasta 100");
+                txtInsertCalificacion3.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion4) || !int.TryParse(calificacion4, out int cal4) || cal4 < 0 || cal4 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 4 con un numero positivo entre 0 hasta 100");
+                txtInsertCalificacion4.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(Examen) || !int.TryParse(Examen, out int exam) || exam < 0 || exam > 100)
             {
                 MessageBox.Show("Llenar el campo Examen con un numero positivo entre 0 hasta 100");
+                txtInsertExamen.Focus();
                 return;
             }
 
@@ -131,13 +139,22 @@ namespace Sistema_Calificacion
                 };
                 db.Calificaciones.Add(calificaciones);
                 db.SaveChanges();
+
+                MessageBox.Show($"Éxito al insertar la calificación con ID: {calID}");
+
                 cargarDatos();
+
+                txtInsertCalificacionID.Clear();
+                txtInsertCalificacion1.Clear();
+                txtInsertCalificacion2.Clear();
+                txtInsertCalificacion3.Clear();
+                txtInsertCalificacion4.Clear();
+                txtInsertExamen.Clear();
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Error al insertar calificacion " + ex.Message);
+                MessageBox.Show("Error al insertar calificación: " + ex.Message);
             }
-
 
         }
 
@@ -147,21 +164,34 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1)
             {
-                MessageBox.Show($"No Hay Calicacion Con ese ID");
+                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
+                txtElimCalificacionID.Focus();
                 return;
             }
 
             try
             {
-                var califaciones = db.Calificaciones.Find(id);
+                var califacion = db.Calificaciones.Find(id);
 
-                db.Calificaciones.Remove(califaciones);
+                if (califacion == null)
+                {
+                    MessageBox.Show($"No Existe es calificación registrada con ID {id}");
+                    txtElimCalificacionID.Focus();
+                    return;
+                }
+
+                db.Calificaciones.Remove(califacion);
                 db.SaveChanges();
+
+                MessageBox.Show($"Éxito al eliminar calificación registrada con ID: {id}");
+
                 cargarDatos();
+
+                txtElimCalificacionID.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar");
+                MessageBox.Show("Error al eliminar calificación: " + ex.Message);
                 return;
             }
 
@@ -183,49 +213,49 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 0 || calID > 100)
             {
-                MessageBox.Show("Llenar el campo CalificacionID con un numero positivo");
+                MessageBox.Show("Llenar el campo CalificacionID con un número positivo");
                 return;
             } 
 
             if (string.IsNullOrEmpty(txtEstudianteID) || !int.TryParse(txtEstudianteID, out int estID) || estID < 0 || estID > 100)
             {
-                MessageBox.Show("Llenar el campo EstudianteID con un numero positivo");
+                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
                 return;
             }
 
             if (string.IsNullOrEmpty(txtMateriaID) || !int.TryParse(txtMateriaID, out int matID) || matID < 0 || matID > 100)
             {
-                MessageBox.Show("Llenar el campo CalificacionID con un numero positivo");
+                MessageBox.Show("Llenar el campo CalificacionID con un número positivo");
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion1) || !int.TryParse(calificacion1, out int cal1) || cal1 < 0 || cal1 > 100)
             {
-                MessageBox.Show("Llenar el campo Calificacion 1 con un numero positivo entre 0 hasta 100");
+                MessageBox.Show("Llenar el campo Calificación 1 con un número positivo entre 0 hasta 100");
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion2) || !int.TryParse(calificacion2, out int cal2) || cal2 < 0 || cal2 > 100)
             {
-                MessageBox.Show("Llenar el campo Calificacion 2 con un numero positivo entre 0 hasta 100");
+                MessageBox.Show("Llenar el campo Calificación 2 con un número positivo entre 0 hasta 100");
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion3) || !int.TryParse(calificacion3, out int cal3) || cal3 < 0 || cal3 > 100)
             {
-                MessageBox.Show("Llenar el campo Calificacion 3 con un numero positivo entre 0 hasta 100");
+                MessageBox.Show("Llenar el campo Calificación 3 con un número positivo entre 0 hasta 100");
                 return;
             }
 
             if (string.IsNullOrEmpty(calificacion4) || !int.TryParse(calificacion4, out int cal4) || cal4 < 0 || cal4 > 100)
             {
-                MessageBox.Show("Llenar el campo Calificacion 4 con un numero positivo entre 0 hasta 100");
+                MessageBox.Show("Llenar el campo Calificación 4 con un número positivo entre 0 hasta 100");
                 return;
             }
 
             if (string.IsNullOrEmpty(Examen) || !int.TryParse(Examen, out int exam) || exam < 0 || exam > 100)
             {
-                MessageBox.Show("Llenar el campo Examen con un numero positivo entre 0 hasta 100");
+                MessageBox.Show("Llenar el campo Examen con un número positivo entre 0 hasta 100");
                 return;
             }
 
@@ -235,7 +265,7 @@ namespace Sistema_Calificacion
 
                 if (calificaciones == null)
                 {
-                    MessageBox.Show("No Existe");
+                    MessageBox.Show($"No existe calificación registrada con ID: {calID}");
                     return;
                 }
 
@@ -252,96 +282,118 @@ namespace Sistema_Calificacion
                 calificaciones.Clasificacion = CalcularClasificacion(totalC);
                 calificaciones.Estado = CalcularEstado(totalC);
 
-                MessageBox.Show("Exito");
                 db.SaveChanges();
+
+                MessageBox.Show($"Éxito al actualizar el calificación registrada con ID: {calID}");
+                
                 cargarDatos();
+
+                txtActCalificacionID.Clear();
+                txtActCalificacion1.Clear();
+                txtActCalificacion2.Clear();
+                txtActCalificacion3.Clear();
+                txtActCalificacion4.Clear();
+                txtActExamen.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Error al actualizar calificación: " + ex.Message);
             }
-
-
 
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            var calificaciones = db.Calificaciones.OrderBy(c => c.CalificacionID).Select(c => new
-            {
-                c.CalificacionID,
-                Estudiante = c.Estudiante.Nombre + " " + c.Estudiante.Apellido,
-                Materia = c.Materia.Nombre,
-                c.Calificacion1,
-                c.Calificacion2,
-                c.Calificacion3,
-                c.Calificacion4,
-                c.Examen,
-                c.Total,
-                c.Clasificacion,
-                c.Estado
-            }).ToList();
+            var calificaciones = db.Calificaciones.OrderBy(c => c.CalificacionID).ToList();
 
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            using (SaveFileDialog cuadroGuardar = new SaveFileDialog())
             {
-                sfd.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
-                sfd.FileName = "Calificaciones";
-                if (sfd.ShowDialog() != DialogResult.OK) return;
+                cuadroGuardar.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
+                cuadroGuardar.FileName = "Calificaciones";
+               
+                if (cuadroGuardar.ShowDialog() != DialogResult.OK) return;
 
                 try
                 {
-                    if (sfd.FilterIndex == 1)
+                    if (cuadroGuardar.FilterIndex == 1)
                     {
-                        var sb = new StringBuilder();
-                        sb.AppendLine("CalificaciónID, Estudiante, Materia, Calificación 1, Calificacion 2, Calificación 3,Calificación 4, Examen, Total, Clasificación, Estado");
-                        foreach (var c in calificaciones)
-                            sb.AppendLine($"{c.CalificacionID}, {c.Estudiante}, {c.Materia}, {c.Calificacion1}, {c.Calificacion2}, {c.Calificacion3}, dedcx6e{c.Calificacion4},{c.Examen},{c.Total},{c.Clasificacion},{c.Estado}");
-                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                        ExportarCSV(cuadroGuardar.FileName, calificaciones);
                     }
                     else
                     {
-                        using (var writer = new PdfWriter(sfd.FileName))
-                        using (var pdf = new PdfDocument(writer))
-                        {
-                            pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4.Rotate());
-                            var doc = new Document(pdf);
-                            var tabla = new Table(11);
-                            tabla.SetFontSize(8);
-                            tabla.AddHeaderCell("ID");
-                            tabla.AddHeaderCell("Estudiante");
-                            tabla.AddHeaderCell("Materia");
-                            tabla.AddHeaderCell("Calificación 1");
-                            tabla.AddHeaderCell("Calificación 2");
-                            tabla.AddHeaderCell("Calificación 3");
-                            tabla.AddHeaderCell("Calificación 4");
-                            tabla.AddHeaderCell("Examen");
-                            tabla.AddHeaderCell("Total");
-                            tabla.AddHeaderCell("Clasif.");
-                            tabla.AddHeaderCell("Estado");
-                            foreach (var c in calificaciones)
-                            {
-                                tabla.AddCell(c.CalificacionID.ToString());
-                                tabla.AddCell(c.Estudiante);
-                                tabla.AddCell(c.Materia);
-                                tabla.AddCell(c.Calificacion1.ToString());
-                                tabla.AddCell(c.Calificacion2.ToString());
-                                tabla.AddCell(c.Calificacion3.ToString());
-                                tabla.AddCell(c.Calificacion4.ToString());
-                                tabla.AddCell(c.Examen.ToString());
-                                tabla.AddCell(c.Total.ToString());
-                                tabla.AddCell(c.Clasificacion);
-                                tabla.AddCell(c.Estado);
-                            }
-                            doc.Add(tabla);
-                            doc.Close();
-                        }
+                        ExportarPDF(cuadroGuardar.FileName, calificaciones);
                     }
-                    MessageBox.Show("Exportado correctamente.");
+                    MessageBox.Show("Éxito al exportar calificaciones registradas");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error al exportar calificaciones: " + ex.Message);
                 }
+            }
+        }
+
+        private void ExportarCSV(string rutaArchivo, List<Calificacione> calificaciones)
+        {
+            var contenidoCSV = new StringBuilder();
+
+            contenidoCSV.AppendLine("CalificaciónID,Estudiante,Materia,Calificación 1,Calificación 2,Calificación 3,Calificación 4,Examen,Total,Clasificación,Estado");
+
+            foreach (var c in calificaciones)
+            {
+                string estudiante = (c.Estudiante.Nombre + " " + c.Estudiante.Apellido).Replace("\"", "\"\"");
+                string materia = c.Materia.Nombre.Replace("\"", "\"\"");
+                string clasificacion = c.Clasificacion.Replace("\"", "\"\"");
+                string estado = c.Estado.Replace("\"", "\"\"");
+
+                contenidoCSV.AppendLine(
+                    $"{c.CalificacionID},\"{estudiante}\",\"{materia}\"," +
+                    $"{c.Calificacion1},{c.Calificacion2},{c.Calificacion3},{c.Calificacion4}," +
+                    $"{c.Examen},{c.Total},\"{clasificacion}\",\"{estado}\""
+                );
+            }
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+        }
+
+        private void ExportarPDF(string rutaArchivo, List<Calificacione> calificaciones)
+        {
+
+            using (var writerPDF = new PdfWriter(rutaArchivo))
+            using (var documentoPDF = new PdfDocument(writerPDF))
+            using (var documento = new Document(documentoPDF))
+            {
+                documentoPDF.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4.Rotate());
+
+                var tabla = new Table(11);
+                tabla.SetFontSize(8);
+
+                tabla.AddHeaderCell("ID");
+                tabla.AddHeaderCell("Estudiante");
+                tabla.AddHeaderCell("Materia");
+                tabla.AddHeaderCell("C1");
+                tabla.AddHeaderCell("C2");
+                tabla.AddHeaderCell("C3");
+                tabla.AddHeaderCell("C4");
+                tabla.AddHeaderCell("Examen");
+                tabla.AddHeaderCell("Total");
+                tabla.AddHeaderCell("Clasificación.");
+                tabla.AddHeaderCell("Estado");
+
+                foreach (var calificacion in calificaciones)
+                {
+                    tabla.AddCell(calificacion.CalificacionID.ToString());
+                    tabla.AddCell(calificacion.Estudiante.Nombre + " " + calificacion.Estudiante.Apellido);
+                    tabla.AddCell(calificacion.Materia.Nombre);
+                    tabla.AddCell(calificacion.Calificacion1.ToString());
+                    tabla.AddCell(calificacion.Calificacion2.ToString());
+                    tabla.AddCell(calificacion.Calificacion3.ToString());
+                    tabla.AddCell(calificacion.Calificacion4.ToString());
+                    tabla.AddCell(calificacion.Examen.ToString());
+                    tabla.AddCell(calificacion.Total.ToString());
+                    tabla.AddCell(calificacion.Clasificacion);
+                    tabla.AddCell(calificacion.Estado);
+                }
+
+                documento.Add(tabla);
             }
         }
 
@@ -358,7 +410,7 @@ namespace Sistema_Calificacion
                 Calificacion4 = c.Calificacion4,
                 Examen = c.Examen,
                 Total = c.Total,
-                Clasificacion = c.Clasificacion,
+                Clasificación = c.Clasificacion,
                 Estado = c.Estado
             }).ToList();
 
@@ -373,7 +425,7 @@ namespace Sistema_Calificacion
             tablaContenido.Columns["Calificacion4"].Width = 74;
             tablaContenido.Columns["Examen"].Width = 52;
             tablaContenido.Columns["Total"].Width = 52;
-            tablaContenido.Columns["Clasificacion"].Width = 70;
+            tablaContenido.Columns["Clasificación"].Width = 70;
             tablaContenido.Columns["Estado"].Width = 70;
         }
 

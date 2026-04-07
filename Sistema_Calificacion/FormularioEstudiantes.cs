@@ -216,7 +216,7 @@ namespace Sistema_Calificacion
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Error al actualizar " + ex.Message);
+                MessageBox.Show("Error al actualizar estudiante " + ex.Message);
             }
 
         }
@@ -230,7 +230,9 @@ namespace Sistema_Calificacion
             {
                 cuadroGuardar.Filter = "CSV (*.csv)|*.csv|PDF (*.pdf)|*.pdf";
                 cuadroGuardar.FileName = "Estudiantes";
+               
                 if (cuadroGuardar.ShowDialog() != DialogResult.OK) return;
+                
                 try
                 {
                     if (cuadroGuardar.FilterIndex == 1)
@@ -254,7 +256,7 @@ namespace Sistema_Calificacion
         {
             var contenidoCSV = new StringBuilder();
 
-            contenidoCSV.AppendLine("EstudianteID,Nombre,Apellido");
+            contenidoCSV.AppendLine("ID,Nombre,Apellido");
 
             foreach (var estudiante in estudiantes)
             {
@@ -275,7 +277,7 @@ namespace Sistema_Calificacion
            
                 var tabla = new Table(3);
                
-                tabla.AddHeaderCell("EstudianteID");
+                tabla.AddHeaderCell("ID");
                 tabla.AddHeaderCell("Nombre");
                 tabla.AddHeaderCell("Apellido");
                

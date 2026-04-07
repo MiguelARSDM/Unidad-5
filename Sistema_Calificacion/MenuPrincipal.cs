@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Sistema_Calificacion
 {
@@ -17,25 +18,30 @@ namespace Sistema_Calificacion
             InitializeComponent();
         }
 
-        private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CalificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormularioCalificaciones form = new FormularioCalificaciones();
             form.MdiParent = this;
             form.Show();
         }
 
-        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EstudiantesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormularioEstudiantes form = new FormularioEstudiantes();
             form.MdiParent = this;
             form.Show();
         }
 
-        private void materiaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MateriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormularioMaterias form = new FormularioMaterias();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

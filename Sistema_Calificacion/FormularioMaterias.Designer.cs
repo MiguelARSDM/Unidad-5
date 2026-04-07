@@ -270,7 +270,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormularioMaterias";
-            this.Text = "FormularioMaterias";
+            this.Text = "Materias";
             this.Load += new System.EventHandler(this.FormularioMaterias_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

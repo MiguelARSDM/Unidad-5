@@ -222,7 +222,7 @@ namespace Sistema_Calificacion
         {
             var contenidoCSV = new StringBuilder();
            
-            contenidoCSV.AppendLine("MateriaID,Nombre");
+            contenidoCSV.AppendLine("ID,Nombre");
 
             foreach (var materia in materias)
             {
@@ -242,7 +242,7 @@ namespace Sistema_Calificacion
             {     
                 var tabla = new Table(2);
               
-                tabla.AddHeaderCell("MateriaID");
+                tabla.AddHeaderCell("ID");
                 tabla.AddHeaderCell("Nombre");
                
                 foreach (var materia in materias)
