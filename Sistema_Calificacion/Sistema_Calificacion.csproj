@@ -225,6 +225,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Modelo\SistemaCalificaionesDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -259,6 +260,8 @@
       <DependentUpon>SistemaCalificaionesDB.edmx</DependentUpon>
       <LastGenOutput>SistemaCalificaionesDB.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\image1.png" />
+    <None Include="Resources\image.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

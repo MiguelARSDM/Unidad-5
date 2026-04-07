@@ -18,30 +18,60 @@ namespace Sistema_Calificacion
             InitializeComponent();
         }
 
-        private void CalificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void calificacionesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            CerrarFormulariosAbiertos();
+            panelBienvenida.Visible = false;
+            
             FormularioCalificaciones form = new FormularioCalificaciones();
             form.MdiParent = this;
+
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(0, 0);
+
             form.Show();
         }
 
-        private void EstudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EstudiantesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            CerrarFormulariosAbiertos();
+            panelBienvenida.Visible = false;
+            
             FormularioEstudiantes form = new FormularioEstudiantes();
             form.MdiParent = this;
+
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(0, 0);
+
             form.Show();
         }
 
-        private void MateriasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MateriasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            CerrarFormulariosAbiertos();
+            panelBienvenida.Visible = false;
+          
             FormularioMaterias form = new FormularioMaterias();
             form.MdiParent = this;
+
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(0, 0);
+
             form.Show();
         }
 
-        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SalirToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
+
+        private void CerrarFormulariosAbiertos()
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+        }
+
     }
 }
