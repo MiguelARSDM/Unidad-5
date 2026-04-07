@@ -119,7 +119,8 @@ namespace Sistema_Calificacion
                 MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
                 txtElimEstudianteID.Focus();
                 return;
-            }   
+            }
+
 
             try
             {
@@ -129,6 +130,12 @@ namespace Sistema_Calificacion
                 {
                     MessageBox.Show($"No Existe estudiante registrado con ID {id}");
                     txtElimEstudianteID.Focus();
+                    return;
+                }
+
+                if (db.Calificaciones.Any(c => c.EstudianteID == id))
+                {
+                    MessageBox.Show("No puedes eliminar este estudiante porque tiene calificaciones registradas");
                     return;
                 }
 

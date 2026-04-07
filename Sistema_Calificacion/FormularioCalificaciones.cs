@@ -41,46 +41,46 @@ namespace Sistema_Calificacion
         private void btnInsertar_Click(object sender, EventArgs e)
         {
             string txtCalificacionID = txtInsertCalificacionID.Text.Trim();
-            string txtEstudianteID = cmbInsertEstudianteID.SelectedValue.ToString();
-            string txtMateriaID = cmbInsertMateriaID.SelectedValue.ToString();
             string calificacion1 = txtInsertCalificacion1.Text.Trim();
             string calificacion2 = txtInsertCalificacion2.Text.Trim();
             string calificacion3 = txtInsertCalificacion3.Text.Trim();
             string calificacion4 = txtInsertCalificacion4.Text.Trim();
             string Examen = txtInsertExamen.Text.Trim();
 
-            
 
-            if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 0 || calID > 100)
+
+            if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 1)
             {
                 MessageBox.Show("Llenar el campo CalificacionID con un numero positivo");
                 txtInsertCalificacionID.Focus();
                 return;
             }
 
-            if (db.Calificaciones.Any(c => c.CalificacionID == calID)) 
+            if (db.Calificaciones.Any(c => c.CalificacionID == calID))
             {
                 MessageBox.Show($"Ya hay una calificacion regitrada con el ID: {calID}");
                 txtInsertCalificacionID.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtEstudianteID) || !int.TryParse(txtEstudianteID, out int estID) || estID < 0 || estID > 100)
+            if (cmbInsertEstudianteID.SelectedValue == null)
             {
-                MessageBox.Show("Llenar el campo EstudianteID con un numero positivo");
+                MessageBox.Show("Selecciona un estudiante registrado");
                 return;
             }
+            int estID = Convert.ToInt32(cmbInsertEstudianteID.SelectedValue);
 
-            if (string.IsNullOrEmpty(txtMateriaID) || !int.TryParse(txtMateriaID, out int matID) || matID < 0 || matID > 100)
+            if (cmbInsertMateriaID.SelectedValue == null)
             {
-                MessageBox.Show("Llenar el campo CalificacionID con un numero positivo");
+                MessageBox.Show("Selecciona una materia registrada");
                 return;
             }
+            int matID = Convert.ToInt32(cmbInsertMateriaID.SelectedValue);
 
-            if(db.Calificaciones.Any(c => c.EstudianteID == estID && c.MateriaID == matID)
-               )      
+            if (db.Calificaciones.Any(c => c.EstudianteID == estID && c.MateriaID == matID))
+                     
             {
-                MessageBox.Show($"Ya {db.Estudiantes.Find(estID).Nombre} {db.Estudiantes.Find(estID).Apellido} tiene la calificaciones de la materia {db.Materias.Find(matID).Nombre}");
+                MessageBox.Show($"Ya {db.Estudiantes.Find(estID).Nombre} {db.Estudiantes.Find(estID).Apellido} tiene otra calificación de la materia {db.Materias.Find(matID).Nombre}");
                 return;
             }
 
@@ -164,7 +164,7 @@ namespace Sistema_Calificacion
 
             if (string.IsNullOrEmpty(txtID) || !int.TryParse(txtID, out int id) || id < 1)
             {
-                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
+                MessageBox.Show("Llenar el campo CalificacionID con un número positivo");
                 txtElimCalificacionID.Focus();
                 return;
             }
@@ -175,7 +175,7 @@ namespace Sistema_Calificacion
 
                 if (califacion == null)
                 {
-                    MessageBox.Show($"No Existe es calificación registrada con ID {id}");
+                    MessageBox.Show($"No Existe una calificación registrada con ID {id}");
                     txtElimCalificacionID.Focus();
                     return;
                 }
@@ -207,25 +207,29 @@ namespace Sistema_Calificacion
             string calificacion4 = txtActCalificacion4.Text.Trim();
             string Examen = txtActExamen.Text.Trim();
 
-            string txtEstudianteID = cmbInsertEstudianteID.SelectedValue.ToString();
-            string txtMateriaID = cmbInsertMateriaID.SelectedValue.ToString();
-
-
-            if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 0 || calID > 100)
+            if (string.IsNullOrEmpty(txtCalificacionID) || !int.TryParse(txtCalificacionID, out int calID) || calID < 1)
             {
                 MessageBox.Show("Llenar el campo CalificacionID con un número positivo");
                 return;
             } 
 
-            if (string.IsNullOrEmpty(txtEstudianteID) || !int.TryParse(txtEstudianteID, out int estID) || estID < 0 || estID > 100)
+            if (cmbActEstudianteID.SelectedValue == null)
             {
-                MessageBox.Show("Llenar el campo EstudianteID con un número positivo");
+                MessageBox.Show("Seleccciona un estudiante registrado");
                 return;
             }
+            int estID = Convert.ToInt32(cmbActEstudianteID.SelectedValue);
 
-            if (string.IsNullOrEmpty(txtMateriaID) || !int.TryParse(txtMateriaID, out int matID) || matID < 0 || matID > 100)
+            if (cmbActMateriaID.SelectedValue == null)
             {
-                MessageBox.Show("Llenar el campo CalificacionID con un número positivo");
+                MessageBox.Show("Selecciona una materia registrada");
+                return;
+            }
+            int matID = Convert.ToInt32(cmbActMateriaID.SelectedValue);
+
+            if (db.Calificaciones.Any(c => c.EstudianteID == estID && c.MateriaID == matID && c.CalificacionID != calID))
+            {
+                MessageBox.Show($"Ya {db.Estudiantes.Find(estID).Nombre} {db.Estudiantes.Find(estID).Apellido} tiene otra calificación de la materia {db.Materias.Find(matID).Nombre}");
                 return;
             }
 
@@ -269,12 +273,15 @@ namespace Sistema_Calificacion
                     return;
                 }
 
+                calificaciones.EstudianteID = estID;
+                calificaciones.MateriaID = matID;
+
                 calificaciones.Calificacion1 = cal1;
                 calificaciones.Calificacion2 = cal2;
                 calificaciones.Calificacion3 = cal3;
                 calificaciones.Calificacion4 = cal4;
                 calificaciones.Examen = exam;
-
+                
                 
                 decimal totalC = CalcularTotal(cal1, cal2, cal3, cal4, exam);
 
@@ -459,17 +466,19 @@ namespace Sistema_Calificacion
                 Nombre = m.Nombre
             }).ToList();
 
+            cmbInsertMateriaID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbInsertMateriaID.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbInsertMateriaID.DataSource = materias;
             cmbInsertMateriaID.DisplayMember = "Nombre";
             cmbInsertMateriaID.ValueMember = "ID";
+            
+
             cmbActMateriaID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbActMateriaID.AutoCompleteSource = AutoCompleteSource.ListItems;
-
             cmbActMateriaID.DataSource = materias;
             cmbActMateriaID.DisplayMember = "Nombre";
             cmbActMateriaID.ValueMember = "ID";
-            cmbActMateriaID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbActMateriaID.AutoCompleteSource = AutoCompleteSource.ListItems;
+            
         }
 
 

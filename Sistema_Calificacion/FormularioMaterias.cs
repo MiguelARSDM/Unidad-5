@@ -113,6 +113,12 @@ namespace Sistema_Calificacion
                     return;
                 }
 
+                if (db.Calificaciones.Any(c => c.MateriaID == id))
+                {
+                    MessageBox.Show("No puedes eliminar esta materia porque tiene calificaciones registradas");
+                    return;
+                }
+
                 db.Materias.Remove(materia);
                 db.SaveChanges();
 
