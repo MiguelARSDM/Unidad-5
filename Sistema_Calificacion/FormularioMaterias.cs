@@ -60,6 +60,13 @@ namespace Sistema_Calificacion
                 return;
             }
 
+            if(db.Materias.Any(m => m.Nombre.Trim().ToLower() == nombre.Trim().ToLower()))
+            { 
+                MessageBox.Show($"Ya existe una materia con el nombre: {nombre}");
+                txtInsertNombre.Focus();
+                return;
+            }
+
             if (nombre.Length < 1 || nombre.Length > 100)
             {
                 MessageBox.Show("El campo Nombre deber tener entre 1 hasta 100 caracteres");
@@ -161,6 +168,13 @@ namespace Sistema_Calificacion
                 return;
             }
 
+            if (db.Materias.Any(m => m.Nombre.Trim().ToLower() == nombre.Trim().ToLower() && m.MateriaID != id))
+            {
+                MessageBox.Show($"Ya existe otra materia con el nombre: {nombre}");
+                txtActNombre.Focus();
+                return;
+            }
+
             try
             {
                 var materia = db.Materias.Find(id);
@@ -174,9 +188,9 @@ namespace Sistema_Calificacion
 
                 materia.Nombre = nombre;
 
-                MessageBox.Show($"Éxito al actualizar materia registrada con ID: {id}");
-
                 db.SaveChanges();
+
+                MessageBox.Show($"Éxito al actualizar materia registrada con ID: {id}");
 
                 cargarDatos();
 
@@ -236,7 +250,7 @@ namespace Sistema_Calificacion
                 contenidoCSV.AppendLine($"{materia.MateriaID},\"{nombre}\"");
             }
 
-            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), new UTF8Encoding(true));
         }
 
         private void ExportarPDF(string rutaArchivo, List<Materia> materias)

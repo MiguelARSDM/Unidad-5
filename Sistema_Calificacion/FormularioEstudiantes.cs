@@ -269,10 +269,10 @@ namespace Sistema_Calificacion
             {
                 string nombre = estudiante.Nombre.Replace("\"", "\"\"");
                 string apellido = estudiante.Apellido.Replace("\"", "\"\"");
-                contenidoCSV.AppendLine($"{estudiante.EstudianteID},{nombre},{apellido}");
+                contenidoCSV.AppendLine($"{estudiante.EstudianteID},\"{nombre}\",\"{apellido}\"");
             }
 
-            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), new UTF8Encoding(true));
         }
 
         private void ExportarPDF(string rutaArchivo, List<Estudiante> estudiantes)

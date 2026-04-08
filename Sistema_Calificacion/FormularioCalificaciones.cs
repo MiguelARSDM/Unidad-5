@@ -84,35 +84,35 @@ namespace Sistema_Calificacion
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion1) || !int.TryParse(calificacion1, out int cal1) || cal1 < 0 || cal1 > 100)
+            if (string.IsNullOrEmpty(calificacion1) || !decimal.TryParse(calificacion1, out decimal cal1) || cal1 < 0 || cal1 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 1 con un numero positivo entre 0 hasta 100");
                 txtInsertCalificacion1.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion2) || !int.TryParse(calificacion2, out int cal2) || cal2 < 0 || cal2 > 100)
+            if (string.IsNullOrEmpty(calificacion2) || !decimal.TryParse(calificacion2, out decimal cal2) || cal2 < 0 || cal2 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 2 con un numero positivo entre 0 hasta 100");
                 txtInsertCalificacion2.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion3) || !int.TryParse(calificacion3, out int cal3) || cal3 < 0 || cal3 > 100)
+            if (string.IsNullOrEmpty(calificacion3) || !decimal.TryParse(calificacion3, out decimal cal3) || cal3 < 0 || cal3 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 3 con un numero positivo entre 0 hasta 100");
                 txtInsertCalificacion3.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion4) || !int.TryParse(calificacion4, out int cal4) || cal4 < 0 || cal4 > 100)
+            if (string.IsNullOrEmpty(calificacion4) || !decimal.TryParse(calificacion4, out decimal cal4) || cal4 < 0 || cal4 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificacion 4 con un numero positivo entre 0 hasta 100");
                 txtInsertCalificacion4.Focus();
                 return;
             }
 
-            if (string.IsNullOrEmpty(Examen) || !int.TryParse(Examen, out int exam) || exam < 0 || exam > 100)
+            if (string.IsNullOrEmpty(Examen) || !decimal.TryParse(Examen, out decimal exam) || exam < 0 || exam > 100)
             {
                 MessageBox.Show("Llenar el campo Examen con un numero positivo entre 0 hasta 100");
                 txtInsertExamen.Focus();
@@ -233,31 +233,31 @@ namespace Sistema_Calificacion
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion1) || !int.TryParse(calificacion1, out int cal1) || cal1 < 0 || cal1 > 100)
+            if (string.IsNullOrEmpty(calificacion1) || !decimal.TryParse(calificacion1, out decimal cal1) || cal1 < 0 || cal1 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificación 1 con un número positivo entre 0 hasta 100");
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion2) || !int.TryParse(calificacion2, out int cal2) || cal2 < 0 || cal2 > 100)
+            if (string.IsNullOrEmpty(calificacion2) || !decimal.TryParse(calificacion2, out decimal cal2) || cal2 < 0 || cal2 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificación 2 con un número positivo entre 0 hasta 100");
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion3) || !int.TryParse(calificacion3, out int cal3) || cal3 < 0 || cal3 > 100)
+            if (string.IsNullOrEmpty(calificacion3) || !decimal.TryParse(calificacion3, out decimal cal3) || cal3 < 0 || cal3 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificación 3 con un número positivo entre 0 hasta 100");
                 return;
             }
 
-            if (string.IsNullOrEmpty(calificacion4) || !int.TryParse(calificacion4, out int cal4) || cal4 < 0 || cal4 > 100)
+            if (string.IsNullOrEmpty(calificacion4) || !decimal.TryParse(calificacion4, out decimal cal4) || cal4 < 0 || cal4 > 100)
             {
                 MessageBox.Show("Llenar el campo Calificación 4 con un número positivo entre 0 hasta 100");
                 return;
             }
 
-            if (string.IsNullOrEmpty(Examen) || !int.TryParse(Examen, out int exam) || exam < 0 || exam > 100)
+            if (string.IsNullOrEmpty(Examen) || !decimal.TryParse(Examen, out decimal exam) || exam < 0 || exam > 100)
             {
                 MessageBox.Show("Llenar el campo Examen con un número positivo entre 0 hasta 100");
                 return;
@@ -291,7 +291,7 @@ namespace Sistema_Calificacion
 
                 db.SaveChanges();
 
-                MessageBox.Show($"Éxito al actualizar el calificación registrada con ID: {calID}");
+                MessageBox.Show($"Éxito al actualizar la calificación registrada con ID: {calID}");
                 
                 cargarDatos();
 
@@ -358,7 +358,7 @@ namespace Sistema_Calificacion
                     $"{c.Examen},{c.Total},\"{clasificacion}\",\"{estado}\""
                 );
             }
-            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), Encoding.UTF8);
+            File.WriteAllText(rutaArchivo, contenidoCSV.ToString(), new UTF8Encoding(true));
         }
 
         private void ExportarPDF(string rutaArchivo, List<Calificacione> calificaciones)
@@ -376,10 +376,10 @@ namespace Sistema_Calificacion
                 tabla.AddHeaderCell("ID");
                 tabla.AddHeaderCell("Estudiante");
                 tabla.AddHeaderCell("Materia");
-                tabla.AddHeaderCell("C1");
-                tabla.AddHeaderCell("C2");
-                tabla.AddHeaderCell("C3");
-                tabla.AddHeaderCell("C4");
+                tabla.AddHeaderCell("Calificación 1");
+                tabla.AddHeaderCell("Calificación 2");
+                tabla.AddHeaderCell("Calificación 3");
+                tabla.AddHeaderCell("Calificación 4");
                 tabla.AddHeaderCell("Examen");
                 tabla.AddHeaderCell("Total");
                 tabla.AddHeaderCell("Clasificación.");
@@ -489,7 +489,7 @@ namespace Sistema_Calificacion
 
             decimal totalExam = exam * 0.30m;
 
-            return totalCal + totalExam;
+            return Math.Round(totalCal + totalExam, 2);
         }
         private string CalcularClasificacion(decimal total)
         {

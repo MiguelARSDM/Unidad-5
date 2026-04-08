@@ -20,44 +20,17 @@ namespace Sistema_Calificacion
 
         private void calificacionesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosAbiertos();
-            panelBienvenida.Visible = false;
-            
-            FormularioCalificaciones form = new FormularioCalificaciones();
-            form.MdiParent = this;
-
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(0, 0);
-
-            form.Show();
+            AbrirFormulario(new FormularioCalificaciones());
         }
 
         private void EstudiantesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosAbiertos();
-            panelBienvenida.Visible = false;
-            
-            FormularioEstudiantes form = new FormularioEstudiantes();
-            form.MdiParent = this;
-
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(0, 0);
-
-            form.Show();
+            AbrirFormulario(new FormularioEstudiantes());
         }
 
         private void MateriasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosAbiertos();
-            panelBienvenida.Visible = false;
-          
-            FormularioMaterias form = new FormularioMaterias();
-            form.MdiParent = this;
-
-            form.StartPosition = FormStartPosition.Manual;
-            form.Location = new Point(0, 0);
-
-            form.Show();
+            AbrirFormulario(new FormularioMaterias());
         }
 
         private void SalirToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -71,6 +44,18 @@ namespace Sistema_Calificacion
             {
                 form.Close();
             }
+        }
+
+        private void AbrirFormulario(Form form)
+        {
+            CerrarFormulariosAbiertos();
+            
+            panelBienvenida.Visible = false;
+
+            form.MdiParent = this;
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(0, 0);
+            form.Show();
         }
 
     }
